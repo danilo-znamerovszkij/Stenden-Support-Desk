@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-Dec-2017, 00:59:56
+    Author     : Robert Jeffrey
+*/
+
+@font-face{
+	font-family: "eStenden";
+	src: url(../fonts/bariol_regular-webfont.ttf);
+}
+
+@font-face{
+	font-family: "information";
+	src: url(../fonts/PrestigeEliteStd-Bd.otf);
+}
+
+@font-face{
+	font-family: "nav";
+	src: url(../fonts/lucida.ttf);
+}
+
+*
+{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+
+img
+{
+    max-width:100%;
+    max-height:100%;
+}
+
+.wrapper
+{
+    height:100vh;
+    width:100vw;
+    float:left;
+   
+}
+.header
+{
+    width:100vw;
+    height:10vh;
+    background-color: #01448b;
+    float:left;
+}
+
+p
+{
+    font-family: 'information', 'Arial', sans-serif;
+}
+
+.header p 
+{
+    font-family: 'eStenden', 'Arial', sans-serif;
+    float:left;
+    color: white;
+    font-size: 25pt;
+    margin-left:5px;
+    margin-top:10px;
+}
+
+.logo
+{
+    float:left;
+    height:9vh;
+    margin-top:0.5vh;
+}
+
+.userDetails
+{
+    height:10vh;
+    width:17vw;
+    float:left;
+    background-color: #002a56;
+    padding-top: 15px;
+}
+
+#navItem p 
+{
+    color:white;
+    font-size:16pt;
+    text-align: center;
+    cursor:default;
+    font-family:  'nav', 'Arial', sans-serif;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.navWrapper
+{
+    height: calc(100vh - 20vh);
+    width:17vw;
+    background-color: #01366d;
+    float:left;
+    clear:left;
+}
+
+.titleBox
+{
+    height:9vh;
+    width:calc(100vw - 17vw);
+    background-color: #80a3c8;
+    float:left;
+    
+}
+.clientName p 
+{
+    color:white;
+    text-align: center;
+    font-size:14pt;
+}
+.clientType p 
+{
+    color:white;
+    text-align: center;
+    font-size: 9pt;
+}
+
+.titleBox p 
+{
+    text-align: center;
+    font-size: 18pt;
+    color:#01366d;
+    margin-top:20px;
+}
+.titleDivider
+{
+    height:1vh;
+    width:calc(100vw - 17vw);
+    background-color:#002a56;
+    float:left;
+    
+}
+
+#navItem
+{
+    width:17vw;
+    height:10vh;
+    background-color: #01448b;
+    float:left;
+    margin-bottom:10px;
+    padding-top: 15px;
+    
+}
+#navItem:hover
+{
+    background-color:#001e3d;
+}
