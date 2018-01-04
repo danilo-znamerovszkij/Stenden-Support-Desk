@@ -18,7 +18,7 @@ session_start();
 	<div id="inputs_login">
 
 		<div class="logo">
-			<img src="img/logo.png" alt="Stenden eHelp Logo">
+			<img src="img/login.jpg" alt="Stenden eHelp Logo">
 		</div>
 		<div class="fields">
 			<form action="#" method="post" name="login">
