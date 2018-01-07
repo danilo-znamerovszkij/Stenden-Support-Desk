@@ -1,0 +1,52 @@
+CREATE DATABASE SSD;
+
+USE SSD;
+
+CREATE TABLE operator(operator_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+operator_name VARCHAR(30) NOT NULL,
+phone VARCHAR(12),
+email VARCHAR(30),
+username VARCHAR(16) NOT NULL UNIQUE,
+password VARCHAR(32) NOT NULL,
+operator_photo VARCHAR(256));
+
+CREATE TABLE status(status_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+status_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE category(category_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+category_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE product(product_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+product_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE contact(contact_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+contact_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE client(client_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+client_name VARCHAR(30) NOT NULL,
+client_email VARCHAR(30),
+client_phone_number VARCHAR(12),
+has_maintenance_license BOOLEAN NOT NULL,
+username VARCHAR(16) NOT NULL UNIQUE,
+password VARCHAR(32) NOT NULL,
+contact_id INT,
+FOREIGN KEY (contact_id) REFERENCES contact(contact_id));
+
+CREATE TABLE contact_product(contact_id INT PRIMARY KEY,
+product_id INT,
+FOREIGN KEY (contact_id) REFERENCES contact(contact_id),
+FOREIGN KEY (product_id) REFERENCES product(product_id));
+
+CREATE TABLE incident(incident_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+client_id int,
+operator_id int,
+status_id int,
+category_id int,
+description VARCHAR(512),
+solution VARCHAR(512),
+start_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+end_date DATE,
+FOREIGN KEY (client_id) REFERENCES client(client_id) ,
+FOREIGN KEY (operator_id) REFERENCES operator(operator_id) ,
+FOREIGN KEY (status_id) REFERENCES status(status_id),
+FOREIGN KEY (category_id) REFERENCES category(category_id));
