@@ -22,7 +22,7 @@ session_start();
 		</div>
 		<div class="fields">
 			<form action="LoginProcedures.php" method="post" name="login">
-					<p><div class="fieldsText">Username </div><input class="fieldsInput" style="width: 100%;" type="text" name="username" width="50px"></p>
+					<p><div class="fieldsText">Username </div><input class="fieldsInput" style="width: 100%;" type="text" name="username"></p>
 					<p><div class="fieldsText">Password </div><input class="fieldsInput" style="width: 100%;" type="Password" name="password"></p>
 					<p><input class="fieldsText button" style=" margin-top: 10px; float: left;" type="submit" name="submit" value="Login"></p>
 			</form>
