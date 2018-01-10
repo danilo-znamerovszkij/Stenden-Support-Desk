@@ -2,13 +2,12 @@ CREATE DATABASE SSD;
 
 USE SSD;
 
-CREATE TABLE operator(operator_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
-operator_name VARCHAR(30) NOT NULL,
-phone VARCHAR(12),
-email VARCHAR(30),
-username VARCHAR(16) NOT NULL UNIQUE,
-password VARCHAR(32) NOT NULL,
-operator_photo VARCHAR(256));
+
+CREATE TABLE position( 
+	position_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+	position ENUM('operator', 'team_leader', 'security_operator')
+);
+	
 
 CREATE TABLE status(status_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
 status_name VARCHAR(30) NOT NULL);
@@ -21,6 +20,17 @@ product_name VARCHAR(30) NOT NULL);
 
 CREATE TABLE contact(contact_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
 contact_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE operator (
+	operator_id INT NOT NULL UNIQUE,
+	operator_name VARCHAR(30) NOT NULL,
+	phone VARCHAR(12),
+	email VARCHAR(30),
+	username VARCHAR(16) NOT NULL UNIQUE,
+	password VARCHAR(32) NOT NULL,
+	operator_photo VARCHAR(256),
+	position_id int,
+FOREIGN KEY (position_id) REFERENCES position(position_id));
 
 CREATE TABLE client(client_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
 client_name VARCHAR(30) NOT NULL,
@@ -50,3 +60,5 @@ FOREIGN KEY (client_id) REFERENCES client(client_id) ,
 FOREIGN KEY (operator_id) REFERENCES operator(operator_id) ,
 FOREIGN KEY (status_id) REFERENCES status(status_id),
 FOREIGN KEY (category_id) REFERENCES category(category_id));
+
+
