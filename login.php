@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_destroy();
+session_start();
 	  //please use $result to display error messages, the html part is adapted to print out errors (currently lines 35-46 have to code on them)
 ?>
 
@@ -19,7 +21,7 @@ session_start();
 			<img src="img/login.jpg" alt="Stenden eHelp Logo">
 		</div>
 		<div class="fields">
-			<form action="LoginProcedures.php" method="post" name="login">
+			<form action="LoginProcedures2.php" method="post" name="login">
 					<p><div class="fieldsText">Username </div><input class="fieldsInput" style="width: 100%;" type="text" name="username"></p>
 					<p><div class="fieldsText">Password </div><input class="fieldsInput" style="width: 100%;" type="Password" name="password"></p>
 					<p><input class="fieldsText button" style=" margin-top: 10px; float: left;" type="submit" name="submit" value="Login"></p>
