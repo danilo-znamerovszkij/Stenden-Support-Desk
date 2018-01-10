@@ -2,15 +2,11 @@
 
 session_start();
 
-if (isset($_POST['submit'])){
-    //Checking if you pressed the submit button
-
-    //include here DATABASE CONNECTION
+    //DATABASE CONNECTION
+	$DBconnection = mysqli_connect("localhost", "root", "", "ssd");
 
     $UID = mysqli_real_escape_string($DBconnection, $_POST['username']);
     $PWD = mysqli_real_escape_string($DBconnection, $_POST['password']);
-
-
 
     //ERROR HANDLERS
     //CHECK if inputs are empty
@@ -29,7 +25,7 @@ if (isset($_POST['submit'])){
         if ($resultCheck < 1){
 
 			$sql2 = "SELECT username, password FROM client WHERE username='$UID'";
-			$result2 =mysqli_query($DBconnection, $sql);
+			$result2 =mysqli_query($DBconnection, $sql2);
 			$resultCheck2 = mysqli_num_rows($result);
 
 			
@@ -44,19 +40,9 @@ if (isset($_POST['submit'])){
 				
 				if ($row = mysqli_fetch_assoc($result2)){
 
-					//De-hasing the password
-					$hasedPwdCheck = password_verify($pwd, $row['password']);
 
 					//Password check
-					//if ($hasedPwdCheck == false){
-
-						$_SESSION['loginError'] = "Wrong password.";
-						//header("Location: login.php?login=error");
-						//exit(); //to be sure to end the code
-
-					//} elseif ($hasedPwdCheck == true){
-						//IF we didn't hash the password skip to this part
-
+					if ($PWD == $row['password']){
 
 						//LOGIN the user happens here
 						$_SESSION['u_id'] = $row['client_id'];
@@ -70,7 +56,13 @@ if (isset($_POST['submit'])){
 						header("Location: index.php");
 						exit(); //to be sure to end the code
 
-					//}
+					} else{
+						
+						$_SESSION['loginError'] = "Wrong password.";
+						header("Location: login.php?login=error");
+						exit(); //to be sure to end the code
+
+					}
 				}	
 				
 			}
@@ -80,21 +72,10 @@ if (isset($_POST['submit'])){
 
             if ($row = mysqli_fetch_assoc($result)){
 
-                //De-hasing the password
-                //$hasedPwdCheck = password_verify($pwd, $row['password']);
-
                 //Password check
-                //if ($hasedPwdCheck == false){
+                if ($PWD == $row['password']){
 
-                    $_SESSION['loginError'] = "Wrong password.";
-                    //header("Location: login.php?login=error");
-                    //exit(); //to be sure to end the code
-
-                //} elseif ($hasedPwdCheck == true){
-                    //IF we didn't hash the password skip to this part
-
-
-                    //LOGIN the user happens here
+					//LOGIN the user happens here
                     $_SESSION['o_id'] = $row['operator_id'];
                     $_SESSION['o_name'] = $row['operator_name'];
                     $_SESSION['o_phone'] = $row['phone'];
@@ -105,14 +86,14 @@ if (isset($_POST['submit'])){
                     header("Location: index.php");
                     exit(); //to be sure to end the code
 
-                //}
+                }else{
+
+                    $_SESSION['loginError'] = "Wrong password.";
+                    header("Location: login.php?login=error");
+                    exit(); //to be sure to end the code
+                }
             }
         }
     }
-} else { //TODO do the error codes and implement them into login.php
-
-    header("Location: homepage.php?login=error"); //CHECK the name of the page you want to go back
-    exit(); //to be sure to end the code
-}
 
 ?>
