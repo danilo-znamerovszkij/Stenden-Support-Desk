@@ -12,14 +12,13 @@ if (isset($_POST['submit'])){
 
 
 
-
     //ERROR HANDLERS
     //CHECK if inputs are empty
     if (empty($UID) || empty ($PWD)){
 
-    $_SESSION['loginError'] = "Please fill up all the fields.";
-    header("Location: login.php?login=empty");
-    exit(); //to be sure to end the code
+		$_SESSION['loginError'] = "Please fill up all the fields.";
+		header("Location: login.php");
+		exit(); //to be sure to end the code
 
     } else {
 
@@ -29,12 +28,54 @@ if (isset($_POST['submit'])){
 
         if ($resultCheck < 1){
 
-          // user controll here
+			$sql2 = "SELECT username, password FROM client WHERE username='$UID'";
+			$result2 =mysqli_query($DBconnection, $sql);
+			$resultCheck2 = mysqli_num_rows($result);
 
-        $_SESSION['loginError'] = "Wrong username.";
-        header("Location: login.php?login=error");
-        exit(); //to be sure to end the code
+			
+			//user check
+			if ($resultCheck2 < 1){
+			
+				$_SESSION['loginError'] = "Wrong username.";
+				header("Location: login.php?login=error");
+				exit(); //to be sure to end the code
+		
+			}else{
+				
+				if ($row = mysqli_fetch_assoc($result2)){
 
+					//De-hasing the password
+					$hasedPwdCheck = password_verify($pwd, $row['password']);
+
+					//Password check
+					if ($hasedPwdCheck == false){
+
+						$_SESSION['loginError'] = "Wrong password.";
+						header("Location: login.php?login=error");
+						exit(); //to be sure to end the code
+
+					} elseif ($hasedPwdCheck == true){
+						//IF we didn't hash the password skip to this part
+
+
+						//LOGIN the user happens here
+						$_SESSION['u_id'] = $row['client_id'];
+						$_SESSION['u_name'] = $row['client_name'];
+						$_SESSION['u_phone'] = $row['client_phone_number'];
+						$_SESSION['u_email'] = $row['client_email'];
+						$_SESSION['u_license'] = $row['has_maintenance_license'];
+						$_SESSION['u_username'] = $row['username'];
+						$_SESSION['u_contact_id'] = $row['contact_id'];
+
+						header("Location: index.php");
+						exit(); //to be sure to end the code
+
+					}
+				}	
+				
+			}
+			
+		//operator login
         } else {
 
             if ($row = mysqli_fetch_assoc($result)){
