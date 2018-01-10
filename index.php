@@ -35,8 +35,8 @@ function getField($arr, $name){
 $clientInfo = do_query("SELECT * FROM {$_SESSION['userType']} WHERE {$_SESSION['userType']}_id = ?", [$_SESSION['u_id']])[0];
 
 
-
-//echo getField($clientInfo, "name");
+//Important leave alone 
+//echo getField($clientInfo, "id");
 
 
 ?>
