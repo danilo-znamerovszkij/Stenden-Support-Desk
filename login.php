@@ -1,8 +1,6 @@
-<?php //put your php code here
-	  //please use $result to display error messages, the html part is adapted to print out errors (currently lines 35-46 have to code on them)
-
+<?php
 session_start();
-
+	  //please use $result to display error messages, the html part is adapted to print out errors (currently lines 35-46 have to code on them)
 ?>
 
 <!DOCTYPE html>
@@ -32,15 +30,15 @@ session_start();
 			</form>
 		</div>
 
-		<?php 
+		<?php
 		if (isset($_POST['submit'])){
 
 			echo "
 			<div class='response'>
 
-				<p style='margin-left: 10px'>".$result." </p>
-			
-			
+				<p style='margin-left: 10px'>".$_SESSION['loginError']." </p>
+
+
 			</div>";
 		}
 		?>
