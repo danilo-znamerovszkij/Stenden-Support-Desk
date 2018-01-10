@@ -3,8 +3,15 @@ CREATE DATABASE SSD;
 USE SSD;
 position ENUM('operator', 'team_leader', 'security_operator')
 
+<<<<<<< HEAD
 CREATE TABLE position (position_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
 position_Role ENUM('operator', 'team_leader', 'security_operator')
+=======
+
+CREATE TABLE position( 
+	position_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
+	position ENUM('operator', 'team_leader', 'security_operator')
+>>>>>>> 9cfb75c2a0c439258d26a2ba895e75eb04ff9965
 );
 	
 
@@ -29,7 +36,11 @@ CREATE TABLE operator (
 	password VARCHAR(32) NOT NULL,
 	operator_photo VARCHAR(256),
 	position_id int,
+<<<<<<< HEAD
 	FOREIGN KEY (position_id) REFERENCES position (position_id));
+=======
+FOREIGN KEY (position_id) REFERENCES position(position_id));
+>>>>>>> 9cfb75c2a0c439258d26a2ba895e75eb04ff9965
 
 CREATE TABLE client(client_id INT NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
 client_name VARCHAR(30) NOT NULL,
@@ -59,3 +70,5 @@ FOREIGN KEY (client_id) REFERENCES client(client_id) ,
 FOREIGN KEY (operator_id) REFERENCES operator(operator_id) ,
 FOREIGN KEY (status_id) REFERENCES status(status_id),
 FOREIGN KEY (category_id) REFERENCES category(category_id));
+
+
