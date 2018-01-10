@@ -48,13 +48,13 @@ if (isset($_POST['submit'])){
 					$hasedPwdCheck = password_verify($pwd, $row['password']);
 
 					//Password check
-					if ($hasedPwdCheck == false){
+					//if ($hasedPwdCheck == false){
 
 						$_SESSION['loginError'] = "Wrong password.";
-						header("Location: login.php?login=error");
-						exit(); //to be sure to end the code
+						//header("Location: login.php?login=error");
+						//exit(); //to be sure to end the code
 
-					} elseif ($hasedPwdCheck == true){
+					//} elseif ($hasedPwdCheck == true){
 						//IF we didn't hash the password skip to this part
 
 
@@ -81,16 +81,16 @@ if (isset($_POST['submit'])){
             if ($row = mysqli_fetch_assoc($result)){
 
                 //De-hasing the password
-                $hasedPwdCheck = password_verify($pwd, $row['password']);
+                //$hasedPwdCheck = password_verify($pwd, $row['password']);
 
                 //Password check
-                if ($hasedPwdCheck == false){
+                //if ($hasedPwdCheck == false){
 
                     $_SESSION['loginError'] = "Wrong password.";
-                    header("Location: login.php?login=error");
-                    exit(); //to be sure to end the code
+                    //header("Location: login.php?login=error");
+                    //exit(); //to be sure to end the code
 
-                } elseif ($hasedPwdCheck == true){
+                //} elseif ($hasedPwdCheck == true){
                     //IF we didn't hash the password skip to this part
 
 
