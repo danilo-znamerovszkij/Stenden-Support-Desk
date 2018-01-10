@@ -102,6 +102,7 @@ if (!$DBconnection){
                     $_SESSION['o_email'] = $row['email'];
                     $_SESSION['o_username'] = $row['username'];
                     $_SESSION['o_photo'] = $row['operator_photo'];
+					$_SESSION['o_position_id'] = $row['position_id']
 
                     header("Location: index.php");
                     exit(); //to be sure to end the code
