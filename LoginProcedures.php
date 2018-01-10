@@ -70,7 +70,7 @@ if (isset($_POST['submit'])){
 						header("Location: index.php");
 						exit(); //to be sure to end the code
 
-					}
+					//}
 				}	
 				
 			}
@@ -105,7 +105,7 @@ if (isset($_POST['submit'])){
                     header("Location: index.php");
                     exit(); //to be sure to end the code
 
-                }
+                //}
             }
         }
     }
