@@ -16,13 +16,13 @@ if (!$DBconnection){
 
 	echo "empty / ";
 		$_SESSION['loginError'] = "Please fill up all the fields.";
-		header("Location: login.php");
-		exit(); //to be sure to end the code
+		 header("Location: login.php");
+		 exit(); //to be sure to end the code
 
     } else {
 
 	echo "operator check p1 / ";
-        $sql = "SELECT username, password FROM operator WHERE username = '$UID'";
+        $sql = "SELECT * FROM operator WHERE username = '$UID'";
         $result = mysqli_query($DBconnection, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -30,7 +30,7 @@ if (!$DBconnection){
         if ($resultCheck < 1){
 
 		echo "user check / ";
-			$sql2 = "SELECT username, password FROM client WHERE username = '$UID'";
+			$sql2 = "SELECT * FROM client WHERE username = '$UID'";
 			$result2 = mysqli_query($DBconnection, $sql2);
 			$resultCheck2 = mysqli_num_rows($result2);
 
@@ -40,8 +40,8 @@ if (!$DBconnection){
 
 			echo "wrong username / ";
 				$_SESSION['loginError'] = "Wrong username.";
-				header("Location: login.php");
-				exit(); //to be sure to end the code
+				 header("Location: login.php");
+				 exit(); //to be sure to end the code
 
 			}else{
 
@@ -51,7 +51,7 @@ if (!$DBconnection){
 
 				echo "user password check / ";
 					//Password check
-					if ($PWD == $row['userPass']){
+					if ($PWD == $row['password']){
 
 					echo "user login / ";
 						//LOGIN the user happens here
@@ -63,19 +63,13 @@ if (!$DBconnection){
 						$_SESSION['u_username'] = $row['username'];
 						$_SESSION['u_contact_id'] = $row['contact_id'];
 
-						var_dump($row['client_id']);
-						var_dump($row['client_name']);
-						var_dump($row['has_maintenance_license']);
-						var_dump($row['username']);
-						var_dump($row['contact_id']);
+						header("Location: index.php");
+						exit(); //to be sure to end the code
 
-
-						// header("Location: index.php");
-						// exit(); //to be sure to end the code
 
 					} else{
 
-						echo "user wron password / ";
+						echo "user wrong password / ";
 						$_SESSION['loginError'] = "Wrong password.";
 						header("Location: login.php?login=error");
 						exit(); //to be sure to end the code
@@ -111,8 +105,11 @@ if (!$DBconnection){
                     $_SESSION['o_photo'] = $row['operator_photo'];
                     $_SESSION['o_position_id'] = $row['position_id'];
 
+
                     header("Location: index.php");
                     exit(); //to be sure to end the code
+										echo "stopping";
+										die;
 
                 }else{
 

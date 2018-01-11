@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
             <div class="userDetails">
 
                 <div class="clientName">
-                    <p><?php echo $_SESSION['username']; ?></p>
+                    <p><?php echo $_SESSION['u_name']; ?></p>
                 </div>
                 <div class="clientType">
                     <p><?php echo "ID" . $_SESSION['u_id']; ?></p>
