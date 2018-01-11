@@ -1,7 +1,5 @@
 <?php
 session_start();
-session_destroy();
-session_start();
 	  //please use $result to display error messages, the html part is adapted to print out errors (currently lines 35-46 have to code on them)
 ?>
 

@@ -1,5 +1,5 @@
 <?php session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['u_username'])) {
 }else {
   echo "You are not logged in.";
   die;
