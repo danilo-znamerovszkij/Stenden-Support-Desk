@@ -38,7 +38,7 @@ $clientInfo = do_query("SELECT * FROM {$_SESSION['userType']} WHERE {$_SESSION['
 //Important leave alone
 echo getField($clientInfo, "id");
 
-
+  var_dump($_SESSION['username']);
 ?>
 
 <!DOCTYPE HTML>
@@ -50,6 +50,7 @@ echo getField($clientInfo, "id");
         <a href="login.php">Login page</a>
         <a href="logout.php">Logout</a>
         <a href="submitTicket.php">Submit ticket</a>
+
 
     </body>
 </html>

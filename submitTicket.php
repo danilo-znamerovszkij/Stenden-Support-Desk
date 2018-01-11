@@ -1,6 +1,5 @@
 <?php session_start();
 if (isset($_SESSION['username'])) {
-  echo $_SESSION['username'];
 }else {
   echo "You are not logged in.";
   die;
@@ -56,7 +55,7 @@ if (isset($_SESSION['username'])) {
                 </div>
 
                 <a href="logout.php"><div id="navItem">
-                    <p>Log Out</p> <!-- text isn't selected as link (cursor) -->
+                    <p>Log Out</p>
                 </div></a>
 
             </div>

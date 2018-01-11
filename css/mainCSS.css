@@ -1,4 +1,4 @@
-/* 
+/*
     Created on : 22-Dec-2017, 00:59:56
     Author     : Robert Jeffrey
 */
@@ -33,7 +33,7 @@ img{
     height:100vh;
     width:100vw;
     float:left;
-   
+
 }
 
 .header{
@@ -98,7 +98,7 @@ p{
     width:calc(100vw - 17vw);
     background-color: #80a3c8;
     float:left;
-    
+
 }
 
 .clientName p{
@@ -125,7 +125,7 @@ p{
     width:calc(100vw - 17vw);
     background-color:#002a56;
     float:left;
-    
+
 }
 
 #navItem{
@@ -135,7 +135,7 @@ p{
     float:left;
     margin-bottom:10px;
     padding-top: 15px;
-    
+
 }
 
 #navItem:hover{
@@ -148,11 +148,11 @@ p{
 
     height:4vh;
     background-color:#01448b;
-   
+
     bottom:0px;
     position: absolute;
-    
-    
+
+
 }
 
 .terms
@@ -161,15 +161,19 @@ p{
 
 }
 .terms{
-    
+
     width:200px;
     height:4vh;
-   
+
     margin-left: auto;
     margin-right:auto;
 }
 
 .terms p{
     color:white;
-   
+
+}
+
+#navItem p{
+	cursor: pointer;
 }

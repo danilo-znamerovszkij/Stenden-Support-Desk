@@ -63,8 +63,15 @@ if (!$DBconnection){
 						$_SESSION['u_username'] = $row['username'];
 						$_SESSION['u_contact_id'] = $row['contact_id'];
 
-						header("Location: index.php");
-						exit(); //to be sure to end the code
+						var_dump($row['client_id']);
+						var_dump($row['client_name']);
+						var_dump($row['has_maintenance_license']);
+						var_dump($row['username']);
+						var_dump($row['contact_id']);
+
+
+						// header("Location: index.php");
+						// exit(); //to be sure to end the code
 
 					} else{
 
