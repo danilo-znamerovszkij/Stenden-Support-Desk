@@ -36,7 +36,7 @@ $clientInfo = do_query("SELECT * FROM {$_SESSION['userType']} WHERE {$_SESSION['
 
 
 //Important leave alone 
-//echo getField($clientInfo, "id");
+echo getField($clientInfo, "id");
 
 
 ?>
