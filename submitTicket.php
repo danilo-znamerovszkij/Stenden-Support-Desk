@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php session_start();
+if (isset($_SESSION['username'])) {
+  echo $_SESSION['username'];
+}else {
+  echo "You are not logged in.";
+  die;
+}
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -19,10 +26,10 @@
             <div class="userDetails">
 
                 <div class="clientName">
-                    <p><?php echo $_SESSION['u_username']; ?></p>
+                    <p><?php echo $_SESSION['username']; ?></p>
                 </div>
                 <div class="clientType">
-                    <p><?php echo $_SESSION['u_license']; ?></p>
+                    <p><?php echo "ID" . $_SESSION['u_id']; ?></p>
                 </div>
             </div>
 
@@ -48,9 +55,9 @@
                     <p>Messages</p>
                 </div>
 
-                <div id="navItem">
-                    <p><?php echo "<a href="logout.php">"; ?></p>
-                </div>
+                <a href="logout.php"><div id="navItem">
+                    <p>Log Out</p> <!-- text isn't selected as link (cursor) -->
+                </div></a>
 
             </div>
             <div class="footer">
