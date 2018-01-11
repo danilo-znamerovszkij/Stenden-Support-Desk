@@ -33,18 +33,18 @@ if (!$DBconnection){
 			$sql2 = "SELECT username, password FROM client WHERE username = '$UID'";
 			$result2 = mysqli_query($DBconnection, $sql2);
 			$resultCheck2 = mysqli_num_rows($result2);
-                        
-			
+
+
 			//user check
 			if ($resultCheck2 < 1){
-			
+
 			echo "wrong username / ";
 				$_SESSION['loginError'] = "Wrong username.";
 				header("Location: login.php");
 				exit(); //to be sure to end the code
-		
+
 			}else{
-				
+
 				echo "row assignment / ";
 				if ($row = mysqli_fetch_assoc($result2)){
 
@@ -67,7 +67,7 @@ if (!$DBconnection){
 						exit(); //to be sure to end the code
 
 					} else{
-						
+
 						echo "user wron password / ";
 						$_SESSION['loginError'] = "Wrong password.";
 						header("Location: login.php?login=error");
@@ -80,11 +80,11 @@ if (!$DBconnection){
 					$_SESSION['loginError'] = "Login Error";
 					header("Location: login.php?login=error");
 					exit(); //to be sure to end the code
-				
+
 				}
-				
+
 			}
-			
+
 		//operator login
         } else {
 
@@ -119,10 +119,9 @@ if (!$DBconnection){
 					$_SESSION['loginError'] = "Login Error";
 					header("Location: login.php?login=error");
 					exit(); //to be sure to end the code
-				
+
 			}
         }
     }
 
 ?>
-

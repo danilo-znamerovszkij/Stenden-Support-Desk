@@ -57,3 +57,5 @@ FOREIGN KEY (client_id) REFERENCES client(client_id) ,
 FOREIGN KEY (operator_id) REFERENCES operator(operator_id) ,
 FOREIGN KEY (status_id) REFERENCES status(status_id),
 FOREIGN KEY (category_id) REFERENCES category(category_id));
+
+insert into client (client_name, has_maintenance_license, username, password) values ("John Maverick", "TRUE", "JohnMaverick", "john");

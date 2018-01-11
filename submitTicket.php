@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -13,57 +15,57 @@
                 </div>
                 <p>Stenden eHelp</p>
             </div>
-            
+
             <div class="userDetails">
-                
+
                 <div class="clientName">
-                    <p>Example Name</p>
+                    <p><?php echo $_SESSION['u_username']; ?></p>
                 </div>
                 <div class="clientType">
-                    <p>Example User Type</p>
+                    <p><?php echo $_SESSION['u_license']; ?></p>
                 </div>
             </div>
-            
+
             <div class="titleBox">
                 <p>Submit Ticket</p>
             </div>
-            
+
             <div class="titleDivider">
-                
+
             </div>
-            
+
             <div class="navWrapper">
-                
+
                 <div id="navItem">
                     <p>Submit Ticket</p>
                 </div>
-                
+
                 <div id="navItem">
                     <p>My Tickets</p>
                 </div>
-                
+
                 <div id="navItem">
                     <p>Messages</p>
                 </div>
-                
+
                 <div id="navItem">
-                    <p>Log Out</p>
+                    <p><?php echo "<a href="logout.php">"; ?></p>
                 </div>
-                
+
             </div>
             <div class="footer">
-                
-                
+
+
                 <div class="terms">
                     <p>Terms and conditions</p>
                 </div>
-                
-                
-                
+
+
+
                 <div class="copyright">
-                    
+
                 </div>
-                
+
             </div>
         </div>
     </body>
