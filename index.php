@@ -39,6 +39,7 @@ $clientInfo = do_query("SELECT * FROM {$_SESSION['userType']} WHERE {$_SESSION['
 echo getField($clientInfo, "id");
 
   var_dump($_SESSION['username']);
+  header("location:faq.php");
 ?>
 
 <!DOCTYPE HTML>

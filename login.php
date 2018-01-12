@@ -22,12 +22,9 @@ session_start();
 			<form action="LoginProceduresF.php" method="post" name="login">
 					<p><div class="fieldsText">Username </div><input class="fieldsInput" style="width: 100%;" type="text" name="username"></p>
 					<p><div class="fieldsText">Password </div><input class="fieldsInput" style="width: 100%;" type="Password" name="password"></p>
-					<p><input class="fieldsText button" style=" margin-top: 10px; float: left;" type="submit" name="submit" value="Login"></p>
+					<p><input class="fieldsText button" style=" margin-top: 10px; float: left; margin-left:35%;" type="submit" name="submit" value="Login"></p>
 			</form>
 
-			<form action="index.php">
-				<input class="fieldsText button" style="float: right; margin-top: 10px;" type="submit" name="submit" value="Home">
-			</form>
 		</div>
 
 		<?php
