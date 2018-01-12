@@ -104,13 +104,15 @@ p{
 }
 
 .faq{
-	height: 71vh;
-	/* height: auto; */
+	height: 76vh;
+	
 	width: 80vw;
-	/* border: solid black 1px; */
+	 padding-top:20px;
 	margin-left: calc(100vh - 97vh);
 	margin-top: 20px;
 	overflow-y: scroll;
+        right:0px;
+        position:absolute;
 }
 
 .content .faq p{

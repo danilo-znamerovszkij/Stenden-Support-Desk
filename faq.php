@@ -1,8 +1,15 @@
 <?php session_start();
-if (isset($_SESSION['u_username'])) {
+if (isset($_SESSION['username'])) {
 }else {
   echo "You are not logged in.";
   die;
+}
+
+require "php/permissions.php";
+
+
+function has_license(){
+    return isset($_SESSION['license']) && $_SESSION['license'] == 1;
 }
 ?>
 
@@ -25,10 +32,10 @@ if (isset($_SESSION['u_username'])) {
             <div class="userDetails">
 
                 <div class="clientName">
-                    <p><?php echo $_SESSION['u_name']; ?></p>
+                    <p><?php echo $_SESSION['name']; ?></p>
                 </div>
                 <div class="clientType">
-                    <p><?php echo "ID " . $_SESSION['u_id']; ?></p>
+                    <p><?php echo $_SESSION['userType']; ?></p>
                 </div>
             </div>
 
@@ -44,9 +51,7 @@ if (isset($_SESSION['u_username'])) {
 
               <?php
 
-              if ($_SESSION['u_license'] == 1) {
-
-                echo "
+              if ($_SESSION['license'] == 1) { ?>
               <a href='submitTicket.php'>
                 <div id='navItem'>
                     <p>Submit Ticket</p>
@@ -65,11 +70,11 @@ if (isset($_SESSION['u_username'])) {
                 </div>
               </a>
 
-              ";
+              <?php } ?>
 
-              }
+              
 
-              ?>
+              
 
               <a href="logout.php">
                 <div id="navItem">
@@ -80,6 +85,8 @@ if (isset($_SESSION['u_username'])) {
             </div>
 
             <div class="content">
+                
+                <?php if(has_license() || user_can('view', basename(__FILE__))){ ?>
                 <div class="faq">
 
                   <article>
@@ -123,6 +130,9 @@ if (isset($_SESSION['u_username'])) {
                   </article>
 
                 </div>
+                <?php } else { ?>
+                <p>You are not supposed to see this page.</p>
+                <?php } ?>
             </div>
 
             <div class="footer">

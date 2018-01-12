@@ -55,13 +55,14 @@ if (!$DBconnection){
 
 					echo "user login / ";
 						//LOGIN the user happens here
-						$_SESSION['u_id'] = $row['client_id'];
-						$_SESSION['u_name'] = $row['client_name'];
-						$_SESSION['u_phone'] = $row['client_phone_number'];
-						$_SESSION['u_email'] = $row['client_email'];
-						$_SESSION['u_license'] = $row['has_maintenance_license'];
-						$_SESSION['u_username'] = $row['username'];
-						$_SESSION['u_contact_id'] = $row['contact_id'];
+                                        $_SESSION['userType'] = "";
+						$_SESSION['id'] = $row['client_id'];
+						$_SESSION['name'] = $row['client_name'];
+						$_SESSION['phone'] = $row['client_phone_number'];
+						$_SESSION['email'] = $row['client_email'];
+						$_SESSION['license'] = $row['has_maintenance_license'];
+						$_SESSION['username'] = $row['username'];
+						$_SESSION['contact_id'] = $row['contact_id'];
 
 						header("Location: index.php");
 						exit(); //to be sure to end the code
@@ -97,13 +98,14 @@ if (!$DBconnection){
                 if ($PWD == $row['password']){
 
 					//LOGIN the user happens here
-                    $_SESSION['o_id'] = $row['operator_id'];
-                    $_SESSION['o_name'] = $row['operator_name'];
-                    $_SESSION['o_phone'] = $row['phone'];
-                    $_SESSION['o_email'] = $row['email'];
-                    $_SESSION['o_username'] = $row['username'];
-                    $_SESSION['o_photo'] = $row['operator_photo'];
-                    $_SESSION['o_position_id'] = $row['position_id'];
+                    $_SESSION['userType'] = "operator";
+                    $_SESSION['id'] = $row['operator_id'];
+                    $_SESSION['name'] = $row['operator_name'];
+                    $_SESSION['phone'] = $row['phone'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['photo'] = $row['operator_photo'];
+                    $_SESSION['position_id'] = $row['position_id'];
 
 
                     header("Location: index.php");

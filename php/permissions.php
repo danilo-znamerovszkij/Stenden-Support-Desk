@@ -58,17 +58,17 @@ function user_can($action, $resource){
 
 }
 
-// Let's show some examples...
-user_can('view', 'index.php'); // True
-user_can('delete', 'a no go'); // False. Damn
-
-// Some even more concrete examples...
-if(user_can('view', 'dashboard.php')){
-    echo 'Welcome to the dashboard.';
-} else {
-    echo 'You are not allowed here. Get out!';
-}
-
-// Or even better:
-// (At the top of every page)
-if(!user_can('view', basename(__FILE__))) die('You are not supposed to see this page! Sorry!');
+//// Let's show some examples...
+//user_can('view', 'index.php'); // True
+//user_can('delete', 'a no go'); // False. Damn
+//
+//// Some even more concrete examples...
+//if(user_can('view', 'dashboard.php')){
+//    echo 'Welcome to the dashboard.';
+//} else {
+//    echo 'You are not allowed here. Get out!';
+//}
+//
+//// Or even better:
+//// (At the top of every page)
+//if(!user_can('view', basename(__FILE__))) die('You are not supposed to see this page! Sorry!');
