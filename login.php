@@ -32,7 +32,7 @@ session_start();
 
 			echo "
 			<div class='response'>
-
+                                
 				<p style='margin-left: 10px'>".$_SESSION['loginError']." </p>
 
 
