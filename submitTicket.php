@@ -69,11 +69,6 @@
             </div>
             <div class="navWrapper">
                 <?= generateMenu() ?>
-                <a href="logout.php">
-                    <div id="navItem">
-                        <p>Log Out</p>
-                    </div>
-                </a>
             </div>
             <div class="footer">
 
