@@ -4,10 +4,6 @@ if (isset($_SESSION['u_username'])) {
   echo "You are not logged in.";
   die;
 }
-
-if ($_SESSION['u_license'] == 0) {
-  header('Location: faq.php');
-}
 ?>
 
 <!DOCTYPE HTML>
@@ -37,7 +33,7 @@ if ($_SESSION['u_license'] == 0) {
             </div>
 
             <div class="titleBox">
-                <p>Submit Ticket</p>
+                <p>Frequently Asked Questions</p>
             </div>
 
             <div class="titleDivider">
@@ -46,23 +42,34 @@ if ($_SESSION['u_license'] == 0) {
 
             <div class="navWrapper">
 
-              <a href="faq.php">
-                <div id="navItem">
-                    <p>F.A.Q.</p>
+              <?php
+
+              if ($_SESSION['u_license'] == 1) {
+
+                echo "
+              <a href='submitTicket.php'>
+                <div id='navItem'>
+                    <p>Submit Ticket</p>
                 </div>
               </a>
 
-              <a href="myTickets.php">
-                <div id="navItem">
+              <a href='myTickets.php'>
+                <div id='navItem'>
                     <p>My Tickets</p>
                 </div>
               </a>
 
-              <a href="messages.php">
-                <div id="navItem">
+              <a href='messages.php'>
+                <div id='navItem'>
                     <p>Messages</p>
                 </div>
               </a>
+
+              ";
+
+              }
+
+              ?>
 
               <a href="logout.php">
                 <div id="navItem">
