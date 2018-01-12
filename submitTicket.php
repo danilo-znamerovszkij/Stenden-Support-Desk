@@ -1,15 +1,4 @@
-<?php session_start();
-if (isset($_SESSION['u_username'])) {
-}else {
-  echo "You are not logged in.";
-  die;
-}
-
-if ($_SESSION['u_license'] == 0) {
-  header('Location: faq.php');
-}
-?>
-
+<?php require "php/requirements.php"; ?>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -28,53 +17,49 @@ if ($_SESSION['u_license'] == 0) {
             </div>
 
             <div class="userDetails">
-
                 <div class="clientName">
-                    <p><?php echo $_SESSION['u_name']; ?></p>
+                    <p><?php echo $_SESSION['name']; ?></p>
                 </div>
                 <div class="clientType">
-                    <p><?php echo "ID " . $_SESSION['u_id']; ?></p>
+                    <p><?php echo $_SESSION['userType']; ?></p>
                 </div>
             </div>
 
             <div class="titleBox">
                 <p>Submit Ticket</p>
             </div>
-
-            <div class="titleDivider">
-
-            </div>
+            <div class="titleDivider"></div>
             <div class="content">
                 <div class="content1">
                     <div id="softwareName">Software Name
                         <div class="line1"></div>
-                         <div class="mainselection">
+                        <div class="mainselection">
                             <select name="software" id="input7">
                                 <option>Financial software</option>
-    <!--                            <option value="Alabama">Alabama</option>
+                                <!--                            <option value="Alabama">Alabama</option>
 
-                                <option value="Wisconsin">Wisconsin</option>
-                                <option value="Wyoming">Wyoming</option>    -->                          
+                                                            <option value="Wisconsin">Wisconsin</option>
+                                                            <option value="Wyoming">Wyoming</option>    -->
                             </select>
-                            </div> 
+                        </div>
                     </div>
                     <div id="problemType"> Problem Type
                         <div class="line2"></div>
-                            <div class="mainselection">
-                                <select name="problem" id="input7">
-                                    <option>Choose the type</option>
-                                    <option value="Alabama">Crash</option>
+                        <div class="mainselection">
+                            <select name="problem" id="input7">
+                                <option>Choose the type</option>
+                                <option value="Alabama">Crash</option>
 
-                                    <option value="Wisconsin">Crash</option>
-                                    <option value="Wyoming">Crash</option>                              
-                                </select>
-                            </div> 
-                           
+                                <option value="Wisconsin">Crash</option>
+                                <option value="Wyoming">Crash</option>
+                            </select>
+                        </div>
+
                     </div>
                     <input type="submit" id="submit">
                 </div>
-                
-                
+
+
                 <div class="content2">
                     <div id="pbd">Problem Description
                         <div class="line3"></div>
@@ -83,31 +68,12 @@ if ($_SESSION['u_license'] == 0) {
                 </div>
             </div>
             <div class="navWrapper">
-
-              <a href="faq.php">
-                <div id="navItem">
-                    <p>F.A.Q.</p>
-                </div>
-              </a>
-
-              <a href="myTickets.php">
-                <div id="navItem">
-                    <p>My Tickets</p>
-                </div>
-              </a>
-
-              <a href="messages.php">
-                <div id="navItem">
-                    <p>Messages</p>
-                </div>
-              </a>
-
-              <a href="logout.php">
-                <div id="navItem">
-                    <p>Log Out</p>
-                </div>
-              </a>
-
+                <?= generateMenu() ?>
+                <a href="logout.php">
+                    <div id="navItem">
+                        <p>Log Out</p>
+                    </div>
+                </a>
             </div>
             <div class="footer">
 
@@ -115,7 +81,6 @@ if ($_SESSION['u_license'] == 0) {
                 <div class="terms">
                     <p>Terms and conditions</p>
                 </div>
-
 
 
                 <div class="copyright">

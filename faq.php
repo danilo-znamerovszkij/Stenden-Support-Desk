@@ -1,16 +1,5 @@
-<?php session_start();
-if (isset($_SESSION['username'])) {
-}else {
-  echo "You are not logged in.";
-  die;
-}
-
-require "php/permissions.php";
-
-
-function has_license(){
-    return isset($_SESSION['license']) && $_SESSION['license'] == 1;
-}
+<?php
+    require "php/requirements.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -48,40 +37,7 @@ function has_license(){
             </div>
 
             <div class="navWrapper">
-
-              <?php
-
-              if ($_SESSION['license'] == 1) { ?>
-              <a href='submitTicket.php'>
-                <div id='navItem'>
-                    <p>Submit Ticket</p>
-                </div>
-              </a>
-
-              <a href='myTickets.php'>
-                <div id='navItem'>
-                    <p>My Tickets</p>
-                </div>
-              </a>
-
-              <a href='messages.php'>
-                <div id='navItem'>
-                    <p>Messages</p>
-                </div>
-              </a>
-
-              <?php } ?>
-
-              
-
-              
-
-              <a href="logout.php">
-                <div id="navItem">
-                    <p>Log Out</p>
-                </div>
-              </a>
-
+                <?= generateMenu() ?>
             </div>
 
             <div class="content">
