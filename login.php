@@ -58,8 +58,8 @@
                 </form>
             </div>
             <?php if (isset($error)){ ?>
-                <div class='response'>
-                    <p style='margin-left: 10px'><?= $error ?></p>
+                <div class='response hovered'>
+                    <p style='margin-left: 10px' id="error"><?= $error ?></p>
                 </div>
             <?php } ?>
         </div>

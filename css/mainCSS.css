@@ -37,6 +37,21 @@ p{
     font-family: 'information', 'Arial', sans-serif;
 }
 
+input, select, textarea {
+    font-family: 'nav', 'Arial', sans-serif;
+}
+
+input, select, textarea {
+    border: 2px solid #01448B;
+    padding: 5px;
+}
+textarea {
+    resize: none;
+}
+input:focus {
+    outline: none;
+}
+
 .fancy-table {
     width: calc(100% - 40px);
     border: 2px solid #01448B;
@@ -72,6 +87,7 @@ p{
     height: 80px;
     background-color: #01448b;
     float:left;
+    position: fixed;
 }
 
 .wrapper .header p {
@@ -97,6 +113,8 @@ p{
     width: 200px;
     min-height: calc(100vh - 80px);
     float: left;
+    position: fixed;
+    margin-top: 80px; /* Height of the header */
 }
 
 .wrapper #content-wrapper #sidebar .userDetails {
@@ -161,6 +179,8 @@ p{
 }
 
 .wrapper #content-wrapper .content {
+    margin-left: 200px;
+    margin-top: 80px;
     width: calc(100% - 200px);
     min-height: calc(100vh - 80px);
     float: left;
@@ -216,3 +236,26 @@ p{
     margin-bottom: 40px;
 }
 /* END OF FAQ PAGE */
+
+/* VIEW TICKETS PAGE */
+.wrapper #content-wrapper .viewTicket p {
+    width: calc(100% - 20px);
+    float: left;
+    line-height: 30px;
+    color: #002a56;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.wrapper #content-wrapper .viewTicket p.isValue {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 40px;
+}
+
+.wrapper #content-wrapper .viewTicket select, textarea {
+    margin-left: 40px;
+    float: left;
+}
+
+/* END OF VIEW TICKETS PAGE */

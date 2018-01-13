@@ -51,7 +51,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
                         <?= generateMenu() ?>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content viewTicket">
                     <div class="titleBox"><p>Viewing Ticket with ID: <?= $ticket['incident_id'] ?></p></div>
 
                     <form action="viewTicket.php" method="POST">
