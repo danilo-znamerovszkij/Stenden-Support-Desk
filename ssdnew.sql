@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2018 at 10:46 PM
+-- Generation Time: Jan 13, 2018 at 01:05 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -97,8 +97,8 @@ CREATE TABLE `incident` (
 
 INSERT INTO `incident` (`incident_id`, `client_id`, `operator_id`, `status_id`, `category_id`, `description`, `solution`, `start_date`, `end_date`) VALUES
 (1, 1, NULL, 1, 3, 'Pooped badly', 'get better loo', '2018-01-10 23:00:00', NULL),
-(2, 2, 1, 4, 3, 'PC crashed', 'Turn off and on', '0000-00-00 00:00:00', NULL),
-(3, 2, 1, 2, 3, 'asdfasdf ', 'asdfasdfasdf', '2018-01-12 19:39:13', NULL);
+(2, 2, 1, 6, 3, 'PC crashed', 'Turn off and on', '0000-00-00 00:00:00', NULL),
+(3, 2, 1, 6, 5, 'There is no display after I log in?', 'Make sure you monitor is connected to a power source. After refresh the page. If nothing changes log out of the system and log back in. If the problem persists reinstall the system', '2018-01-12 19:39:13', NULL);
 
 -- --------------------------------------------------------
 
