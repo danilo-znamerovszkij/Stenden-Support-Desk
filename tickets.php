@@ -3,14 +3,14 @@
 
     // Show different information based on the user type
     if(is_employee()){
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                         INNER JOIN users ON incident.client_id = users.id
                         INNER JOIN category ON incident.category_id = category.category_id
                         INNER JOIN status ON incident.status_id = status.status_id
-                        WHERE status_name != 'Closed' 
+                        WHERE status_name != 'Closed'
                         ORDER BY incident_id DESC";
     } else {
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                         INNER JOIN users ON incident.operator_id = users.id
                         INNER JOIN category ON incident.category_id = category.category_id
                         INNER JOIN status ON incident.status_id = status.status_id
@@ -19,6 +19,11 @@
     }
 
     $tickets = mysqli_query($conn, $sql);
+
+    if (isset($_POST['submit'])) {
+      mysqli_query ($conn, $assignQuery);
+      var_dump ($assignQuery);
+    }
 
 ?>
 
@@ -67,6 +72,7 @@
                             <th>Incident Type</th>
                             <th>Status</th>
                             <th>View Ticket</th>
+                            <th>Assign Ticket</th>
                         </tr>
 
                         <?php while ($row = mysqli_fetch_assoc($tickets)){ ?>
@@ -77,6 +83,10 @@
                                 <td><?= $row['category_name'] ?></td>
                                 <td><?= $row['status_name'] ?></td>
                                 <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
+                                <td><form action="#" method="post" action="assign"><input type="submit" value="Assign to me" name="submit"></form></td>
+                                    <?php $assignQuery = "UPDATE incident SET operator_id =" . $row['operator_id'] . " WHERE incident.incident_id =" . $row['incident_id']. ";"; ?>
+                                    <?php echo $assignQuery; ?>
+
                             </tr>
                         <?php } ?>
                     </table>
@@ -95,4 +105,3 @@
     </div>
     </body>
 </html>
-
