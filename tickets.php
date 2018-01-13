@@ -3,21 +3,23 @@
 
     // Show different information based on the user type
     if(is_employee()){
-        $sql = "SELECT * FROM incident
-                    INNER JOIN users ON incident.client_id = users.id
-                    INNER JOIN category ON incident.category_id = category.category_id
-                    INNER JOIN status ON incident.status_id = status.status_id
-                    ORDER BY incident_id DESC";
+        $sql = "SELECT * FROM incident 
+                        INNER JOIN users ON incident.client_id = users.id
+                        INNER JOIN category ON incident.category_id = category.category_id
+                        INNER JOIN status ON incident.status_id = status.status_id
+                        WHERE status_name != 'Closed' 
+                        ORDER BY incident_id DESC";
     } else {
-        $sql = "SELECT * FROM incident
-                    INNER JOIN users ON incident.operator_id = users.id
-                    INNER JOIN category ON incident.category_id = category.category_id
-                    INNER JOIN status ON incident.status_id = status.status_id
-                    WHERE client_id = {$_SESSION['id']}
-                    ORDER BY incident_id DESC";
+        $sql = "SELECT * FROM incident 
+                        INNER JOIN users ON incident.operator_id = users.id
+                        INNER JOIN category ON incident.category_id = category.category_id
+                        INNER JOIN status ON incident.status_id = status.status_id
+                        WHERE status_name != 'Closed'
+                        ORDER BY incident_id DESC";
     }
 
-    $qry = mysqli_query($conn, $sql);
+    $tickets = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE HTML>
@@ -47,40 +49,40 @@
                 </div>
             </div>
             <div class="content">
-                <div class="titleBox"><p>All tickets</p> <!-- content -->
+                <div class="titleBox"><p>All (non closed) tickets</p></div>
 
-                  <?php if (mysqli_num_rows($qry) == 0) { ?>
-                      <h1>No tickets have been submitted yet.</h1>
-                  <?php } else { ?>
+                <?php if($tickets->num_rows == 0) { ?>
+                    <p>Sorry. There are no tickets at this time.</p>
+                <?php } else { ?>
 
-                      <table class="fancy-table">
-                          <tr>
-                              <th>ID</th>
-                              <?php if(is_employee()){ ?>
-                                  <th>Client Name</th>
-                              <?php } else { ?>
-                                  <th>Operator Name</th>
-                              <?php } ?>
-                              <th>Date Submitted</th>
-                              <th>Incident Type</th>
-                              <th>Status</th>
-                              <th>View Ticket</th>
-                          </tr>
+                    <table class="fancy-table">
+                        <tr>
+                            <th>ID</th>
+                            <?php if(is_employee()){ ?>
+                                <th>Client Name</th>
+                            <?php } else { ?>
+                                <th>Operator Name</th>
+                            <?php } ?>
+                            <th>Date Submitted</th>
+                            <th>Incident Type</th>
+                            <th>Status</th>
+                            <th>View Ticket</th>
+                        </tr>
 
-                          <?php while ($row = mysqli_fetch_assoc($qry)){ ?>
-                              <tr>
-                                  <td><?= $row['incident_id'] ?></td>
-                                  <td><?= $row['name'] ?></td>
-                                  <td><?= $row['start_date'] ?></td>
-                                  <td><?= $row['category_name'] ?></td>
-                                  <td><?= $row['status_name'] ?></td>
-                                  <td><a href='ViewTicket.php'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
-                              </tr>
-                          <?php } ?>
-                      </table>
-                  <?php } ?>
+                        <?php while ($row = mysqli_fetch_assoc($tickets)){ ?>
+                            <tr>
+                                <td><?= $row['incident_id'] ?></td>
+                                <td><?= $row['name'] ?></td>
+                                <td><?= $row['start_date'] ?></td>
+                                <td><?= $row['category_name'] ?></td>
+                                <td><?= $row['status_name'] ?></td>
+                                <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
 
-                </div> <!-- content end -->
+                <?php } ?>
+
 
             </div>
         </div>
@@ -93,3 +95,4 @@
     </div>
     </body>
 </html>
+
