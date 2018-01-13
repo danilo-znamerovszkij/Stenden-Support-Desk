@@ -7,7 +7,6 @@
                     INNER JOIN users ON incident.client_id = users.id
                     INNER JOIN category ON incident.category_id = category.category_id
                     INNER JOIN status ON incident.status_id = status.status_id
-                    -- WHERE operator_id = {$_SESSION['id']}
                     ORDER BY incident_id DESC";
     } else {
         $sql = "SELECT * FROM incident
