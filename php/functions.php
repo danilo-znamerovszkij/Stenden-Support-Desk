@@ -30,16 +30,22 @@ function generateMenu(){
         $fileName = str_replace('.php', '', $fileName);
 
         if($permission == "MyTickets.php") $fileName = "My Tickets";
+        if($permission == "submitTicket.php") $fileName = "Submit a Ticket";
+        if($permission == "faq.php") $fileName = "FAQ";
+
+        $img = str_replace("php", "png", $permission);
 
         $html .= "<a href='$permission'>
-                <div id='navItem'>
+                <div class='navItem'>
+                    <img src='img/menu/$img' alt='$fileName'>
                     <p>$fileName</p>
                 </div>
               </a>";
     }
 
     $html .= "<a href=\"logout.php\">
-                    <div id=\"navItem\">
+                    <div class=\"navItem\">
+                        <img src='img/menu/logout.png' alt='Logout'>
                         <p>Log Out</p>
                     </div>
                 </a>";

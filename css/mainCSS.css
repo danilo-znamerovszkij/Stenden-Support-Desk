@@ -1,6 +1,6 @@
 /*
     Created on : 22-Dec-2017, 00:59:56
-    Author     : Robert Jeffrey
+    Author     : Robert Jeffrey / Harry Potter
 */
 
 @font-face{
@@ -18,12 +18,14 @@
 	src: url(../fonts/lucida.ttf);
 }
 
+
+/* General stuff */
 *{
     padding:0px;
     margin:0px;
     box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 img{
@@ -31,182 +33,186 @@ img{
     max-height:100%;
 }
 
-.wrapper{
-    height:100vh;
-    width:100vw;
-    float:left;
-
-}
-
-.header{
-    width:100vw;
-    height:10vh;
-    background-color: #01448b;
-    float:left;
-}
-
 p{
     font-family: 'information', 'Arial', sans-serif;
 }
 
-.header p{
+.fancy-table {
+    width: calc(100% - 40px);
+    border: 2px solid #01448B;
+    border-collapse: collapse;
+    margin: 20px;
+    float: left;
+}
+.fancy-table th {
+    text-align: left;
+    background: #01448B;
+    color: white;
+    padding: 10px;
+}
+.fancy-table tr:nth-child(odd) {
+    background: #fff;
+}
+.fancy-table tr:nth-child(odd) {
+    background: #80A3C8;
+}
+.fancy-table td {
+    padding: 10px;
+}
+
+
+/* Wireframe */
+.wrapper{
+    min-height: 100vh;
+    width: 100%;
+    float:left;
+}
+.wrapper .header {
+    width: 100%;
+    height: 80px;
+    background-color: #01448b;
+    float:left;
+}
+
+.wrapper .header p {
     font-family: 'eStenden', 'Arial', sans-serif;
     float:left;
     color: white;
     font-size: 25pt;
-    margin-left:5px;
-    margin-top:10px;
+    line-height: 80px;
+    margin: 0;
+}
+.wrapper .header .logo {
+    float:left;
+    height: 50px;
+    margin: 15px;
 }
 
-.logo{
-    float:left;
-    height:9vh;
-    margin-top:0.5vh;
+.wrapper #content-wrapper {
+    width: 100%;
+    float: left;
+    margin-bottom: 30px; /* Height of the footer */
+}
+.wrapper #content-wrapper #sidebar {
+    width: 200px;
+    min-height: calc(100vh - 80px);
+    float: left;
 }
 
-.userDetails{
-    height:10vh;
-    width:17vw;
-    float:left;
+.wrapper #content-wrapper #sidebar .userDetails {
+    width: 100%;
+    height: 60px;
+    float: left;
     background-color: #002a56;
     padding-top: 15px;
 }
 
-#navItem p{
-    color:white;
-    font-size:16pt;
-    text-align: center;
-    cursor:default;
-    font-family:  'nav', 'Arial', sans-serif;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
-}
-
-.navWrapper{
-    height: calc(100vh - 20vh);
-		/* height: 100%; */
-    width:17vw;
-    background-color: #01366d;
-    float:left;
-    clear:left;
-}
-
-.content{
-	/* height: calc(100vh - 24vh); */
-	height: auto;
-	width:80vw;
-	float:left;
-}
-
-.faq{
-	height: 76vh;
-	
-	width: 80vw;
-	 padding-top:20px;
-	margin-left: calc(100vh - 97vh);
-	margin-top: 20px;
-	overflow-y: scroll;
-        right:0px;
-        position:absolute;
-}
-
-.content .faq p{
-	margin-left: 2vw;
-	font-family: 'information', 'Arial', sans-serif;
-}
-
-.content .faq h2{
-	font-family: 'information', 'Arial', sans-serif;
-}
-
-article{
-	margin-bottom: 2vw;
-}
-
-.titleBox{
-    height:9vh;
-    width:calc(100vw - 17vw);
-    background-color: #80a3c8;
-    float:left;
-
-}
-
-.clientName p{
+.wrapper #content-wrapper #sidebar .userDetails .clientName p{
     color:white;
     text-align: center;
     font-size:14pt;
 }
-
-.clientType p{
+.wrapper #content-wrapper #sidebar .userDetails .clientType p {
     color:white;
     text-align: center;
     font-size: 9pt;
 }
 
-.titleBox p{
-    text-align: center;
-    font-size: 18pt;
-    color:#01366d;
-    margin-top:20px;
-}
-
-.titleDivider{
-    height:1vh;
-    width:calc(100vw - 17vw);
-    background-color:#002a56;
+.wrapper #content-wrapper #sidebar .titleDivider {
+    height: 5px;
+    width: 100%;
+    background-color: #fff; /* 002a56 */
     float:left;
-
 }
-
-#navItem{
-    width:17vw;
-    height:10vh;
+.wrapper #content-wrapper #sidebar .navWrapper {
+    width: 100%;
+    background-color: #01366d;
+    min-height: calc(100vh - 80px);
+    float: left;
+}
+.wrapper #content-wrapper #sidebar .navWrapper .navItem {
+    width: 100%;
+    height: 50px;
     background-color: #01448b;
     float:left;
     margin-bottom:10px;
-    padding-top: 15px;
 }
-
-#navItem:hover{
-    background-color:#001e3d;
+.wrapper #content-wrapper #sidebar .navWrapper .navItem img {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    float: left;
 }
-
-
-.footer{
-    width:100%;
-
-    /* height:4vh; */
-		position: fixed;
-    background-color:#01448b;
-
-    bottom:0px;
-    position: absolute;
-}
-
-.terms
-{
-    padding-top: 7px;
-
-}
-.terms{
-
-    width:200px;
-    height:4vh;
-
-    margin-left: auto;
-    margin-right:auto;
-}
-
-.terms p{
+.wrapper #content-wrapper #sidebar .navWrapper .navItem p {
     color:white;
-
+    font-size: 14px;
+    text-align: left;
+    font-family:  'nav', 'Arial', sans-serif;
+    float: left;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    transition: 400ms;
 }
 
-#navItem p{
-	cursor: pointer;
+.wrapper #content-wrapper #sidebar .navWrapper .navItem:hover {
+    background-color:#001e3d;
+    transition: 400ms;
 }
+
+.wrapper #content-wrapper .content {
+    width: calc(100% - 200px);
+    min-height: calc(100vh - 80px);
+    float: left;
+}
+
+.wrapper #content-wrapper .content .titleBox {
+    height: 60px;
+    width: 100%;
+    background-color: #80a3c8;
+    float:left;
+}
+.wrapper #content-wrapper .content .titleBox p {
+    padding: 0;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+.wrapper .footer {
+    width: 100%;
+    float: left;
+    background-color:#01448b;
+    position: fixed;
+    text-align: center;
+    line-height: 40px;
+    bottom: 0;
+    color: white;
+}
+
+
+
+/* END OF WIREFRAMING */
+
+/* FAQ page */
+.wrapper #content-wrapper .content .faq{
+	height: auto;
+	margin-left: 5%;
+	width: 95%;
+    padding: 20px;
+	overflow-y: scroll;
+}
+.wrapper #content-wrapper .content .faq p {
+    margin-left: 40px;
+    font-family: 'information', 'Arial', sans-serif;
+}
+
+.wrapper #content-wrapper .content .faq h2 {
+	font-family: 'information', 'Arial', sans-serif;
+}
+
+.wrapper #content-wrapper .content .faq article {
+    margin-bottom: 40px;
+}
+/* END OF FAQ PAGE */

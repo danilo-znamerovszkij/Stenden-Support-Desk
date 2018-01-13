@@ -17,28 +17,22 @@
                 </div>
                 <p>Stenden eHelp</p>
             </div>
-
-            <div class="userDetails">
-                <div class="clientName">
-                    <p><?php echo $_SESSION['name']; ?></p>
+            <div id="content-wrapper">
+                <div id="sidebar">
+                    <div class="userDetails">
+                        <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
+                        <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
+                    </div>
+                    <div class="titleDivider"></div>
+                    <div class="navWrapper">
+                        <?= generateMenu() ?>
+                    </div>
                 </div>
-                <div class="clientType">
-                    <p><?php echo $_SESSION['userType']; ?></p>
+                <div class="content">
+                    <div class="titleBox"><p>{{Your page name}}</p></div>
+                    <!-- Beautiful content here -->
                 </div>
             </div>
-
-            <div class="titleBox">
-                <p>{{Your page name}}</p>
-            </div>
-            <div class="titleDivider"></div>
-            <div class="navWrapper">
-                <?= generateMenu() ?>
-            </div>
-
-            <div class="content">
-                <!-- Beautiful content here -->
-            </div>
-
             <div class="footer">
                 <div class="terms">
                     <p>Terms and conditions</p>

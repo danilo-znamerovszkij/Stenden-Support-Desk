@@ -20,7 +20,7 @@ $permissionTable = [
         "edit" => ['my_tickets.php', 'my_account.php'],
     ],
     "team leader" => [
-        "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php'],
+        "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php', 'faq.php'],
         "edit" => ['my_tickets.php', 'my_account.php'],
     ]
     // ... and much more of those beautiful account types
