@@ -1,18 +1,47 @@
 <?php
 
+// Can the user see this page (based on permissions)
 function user_can_see_page(){
-    return user_can('view', basename($_SERVER['SCRIPT_FILENAME']));
+    return user_can('view', basename($_SERVER['SCRIPT_FILENAME']))
+        || user_can('edit', basename($_SERVER['SCRIPT_FILENAME']));
 }
 
+// Determines if a user is an employee
 function is_employee(){
     return !($_SESSION['userType'] == "Client");
 }
 
+// Does the user have a valid license?
 function has_license(){
     // TODO: Implement this function
     return true;
 }
 
+// Returns the possible ticket statuses
+function get_ticket_statuses(){
+    global $conn;
+    $sql = "SELECT DISTINCT(status_name), status_id FROM status";
+    $qry = mysqli_query($conn, $sql);
+    $statuses = [];
+    while($status = mysqli_fetch_assoc($qry)){
+        $statuses[] = $status;
+    }
+    return $statuses;
+}
+
+// Returns the possible ticket statuses
+function get_ticket_categories(){
+    global $conn;
+    $sql = "SELECT DISTINCT(category_name), category_id FROM category";
+    $qry = mysqli_query($conn, $sql);
+    $categories = [];
+    while($status = mysqli_fetch_assoc($qry)){
+        $categories[] = $status;
+    }
+    return $categories;
+}
+
+// Generates the menu based on what users can view in the permissions
 function generateMenu(){
 
     global $permissionTable;
