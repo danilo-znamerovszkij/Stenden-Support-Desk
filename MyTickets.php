@@ -75,7 +75,7 @@
                                     <td><?= $row['start_date'] ?></td>
                                     <td><?= $row['category_name'] ?></td>
                                     <td><?= $row['status_name'] ?></td>
-                                    <td><a href='ViewTicket.php'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
+                                    <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
                                 </tr>
                             <?php } ?>
                         </table>
