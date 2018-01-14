@@ -7,6 +7,7 @@ require "php/requirements.php";
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="stylesheet" href="css/submitCSS.css">
         <title>Submit Ticket</title>
     </head>
     <body>
