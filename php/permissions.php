@@ -16,7 +16,7 @@ $permissionTable = [
         "delete" => []
     ],
     "employee" => [
-        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php'],
+        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php'],
         "edit" => [],
     ],
     "team leader" => [

@@ -53,7 +53,6 @@ function generateMenu(){
 
     foreach($permissionTable[strtolower($_SESSION['userType'])]['view'] AS $permission){
 
-        if(strtolower(basename($_SERVER['SCRIPT_FILENAME'])) == strtolower($permission)) continue;
 
         $fileName = ucfirst(str_replace('_', ' ', $permission));
         $fileName = str_replace('.php', '', $fileName);
