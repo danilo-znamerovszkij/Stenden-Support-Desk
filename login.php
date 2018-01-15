@@ -43,7 +43,7 @@
 	<head>
 		<title>Stenden eHelp Login</title>
 		<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
-		<link rel="stylesheet" type="text/css" href="css/loginCSS.css">
+		<link rel="stylesheet" type="text/css" href="css/loginCSS.css">             
 	</head>
 	<body>
         <div id="inputs_login">
