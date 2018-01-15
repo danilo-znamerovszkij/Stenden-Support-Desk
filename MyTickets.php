@@ -3,19 +3,19 @@
 
     // Show different information based on the user type
     if(is_employee()){
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                     INNER JOIN users ON incident.client_id = users.id
                     INNER JOIN category ON incident.category_id = category.category_id
                     INNER JOIN status ON incident.status_id = status.status_id
                     WHERE operator_id = {$_SESSION['id']}
-                    ORDER BY incident_id DESC";
+                    ORDER BY incident.status_id, start_date DESC";
     } else {
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                     INNER JOIN users ON incident.operator_id = users.id
                     INNER JOIN category ON incident.category_id = category.category_id
                     INNER JOIN status ON incident.status_id = status.status_id
                     WHERE client_id = {$_SESSION['id']}
-                    ORDER BY incident_id DESC";
+                    ORDER BY incident.status_id, start_date DESC";
     }
 
     $qry = mysqli_query($conn, $sql);
