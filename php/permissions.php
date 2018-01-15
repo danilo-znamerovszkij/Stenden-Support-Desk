@@ -11,12 +11,12 @@
 
 $permissionTable = [
     "client" => [
-        "view" => ['faq.php', 'submitTicket.php', 'MyTickets.php'],
+        "view" => ['faq.php', 'submitTicket.php', 'MyTickets.php', 'messages.php'],
         "edit" => ['viewTicket.php'],
         "delete" => []
     ],
     "employee" => [
-        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php'],
+        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php', 'messages.php'],
         "edit" => [],
     ],
     "team leader" => [
