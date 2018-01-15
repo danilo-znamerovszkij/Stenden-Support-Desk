@@ -6,19 +6,24 @@
 textarea{
   margin-top: 50px;
   width: 90%;
+  background-color: #80a3c8;
+  border: none;
+  resize: none;
+  padding: 8px;
+  color: #002a56;
 }
 
 .content1{
   width: 50%;
   height: 100%;
-  /* background-color: red; */
+  /*background-color: red; */
   float: left;
 }
 
 .content2{
   width: 50%;
   height: 100%;
-  /* background-color: lightblue; */
+  /*background-color: lightblue; */
   float: right;
 }
 
@@ -48,6 +53,9 @@ textarea{
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
+  overflow:hidden;
+  width:200px;
+  margin-left:35px;
 }
 
 #softwareName{
@@ -75,8 +83,24 @@ textarea{
 #submit{ /* Needs to be aligned to center */
   margin-left: auto;
   margin-right: auto;
-
+  width: 300px;
+  height: 40px;
+  background-color: #002a56;
+  color: white;
+  font-family: 'information', 'Arial', sans-serif;
+  font-size: 12pt;
   margin-top: 200px;
+}
+select {
+    border:0;
+    background:transparent;
+    height:32px;
+    border:1px solid #d8d8d8;
+    width:350px;
+    -webkit-appearance: none;
+    background-color: #80a3c8;
+    color: #002a56;
+    font-family: 'information', 'Arial', sans-serif;
 }
 
 #pbd{
