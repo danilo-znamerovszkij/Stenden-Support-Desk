@@ -7,23 +7,20 @@
                         INNER JOIN users ON incident.client_id = users.id
                         INNER JOIN category ON incident.category_id = category.category_id
                         INNER JOIN status ON incident.status_id = status.status_id
-                        WHERE status_name != 'Closed'
+                        WHERE status_name = 'Not assigned'
                         ORDER BY incident_id DESC";
     } else {
         $sql = "SELECT * FROM incident
                         INNER JOIN users ON incident.operator_id = users.id
                         INNER JOIN category ON incident.category_id = category.category_id
                         INNER JOIN status ON incident.status_id = status.status_id
-                        WHERE status_name != 'Closed'
+                        WHERE status_name = 'Not assigned'
                         ORDER BY incident_id DESC";
     }
 
     $tickets = mysqli_query($conn, $sql);
 
-    if (isset($_POST['submit'])) {
-      mysqli_query ($conn, $assignQuery);
-      var_dump ($assignQuery);
-    }
+
 
 ?>
 
@@ -83,12 +80,26 @@
                                 <td><?= $row['category_name'] ?></td>
                                 <td><?= $row['status_name'] ?></td>
                                 <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
-                                <td><form action="#" method="post" action="assign"><input type="submit" value="Assign to me" name="submit"></form></td>
-                                    <?php $assignQuery = "UPDATE incident SET operator_id =" . $row['operator_id'] . " WHERE incident.incident_id =" . $row['incident_id']. ";"; ?>
-                                    <?php echo $assignQuery; ?>
+                                <td><form action="tickets.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $row['incident_id'] ?>">
+                                    <input type="submit" value="Assign to me" name="submit">
+                                  </form></td>
 
                             </tr>
                         <?php } ?>
+
+                        <?php
+                        if (isset($_POST['submit'])) {
+
+                            $id  = $_POST['id'];
+                            $assignQuery = "UPDATE incident SET operator_id = '{$_SESSION['id']}', status_id = 2 WHERE incident.incident_id =  '$id'";
+
+                          mysqli_query ($conn, $assignQuery);
+
+                          header("location: tickets.php");
+                          var_dump ($assignQuery);
+                        }
+                        ?>
                     </table>
 
                 <?php } ?>
