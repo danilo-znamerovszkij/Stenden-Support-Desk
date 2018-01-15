@@ -64,7 +64,7 @@
             </div>
             <div class="footer">
                 <div class="terms">
-                    <p>Terms and conditions</p>
+                    <a href="terms.php"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>
