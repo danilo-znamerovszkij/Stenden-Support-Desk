@@ -60,7 +60,7 @@ function generateMenu(){
         if($permission == "MyTickets.php") $fileName = "My Tickets";
         if($permission == "submitTicket.php") $fileName = "Submit a Ticket";
         if($permission == "faq.php") $fileName = "FAQ";
-        if ($permission == "terms.php") $fileName = "NULL";
+        if ($permission == "terms.php" || $permission == "statistics2.php") $fileName = "NULL";
 
         $img = str_replace("php", "png", $permission);
 
