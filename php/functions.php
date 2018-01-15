@@ -60,15 +60,18 @@ function generateMenu(){
         if($permission == "MyTickets.php") $fileName = "My Tickets";
         if($permission == "submitTicket.php") $fileName = "Submit a Ticket";
         if($permission == "faq.php") $fileName = "FAQ";
+        if ($permission == "terms.php") $fileName = "NULL";
 
         $img = str_replace("php", "png", $permission);
 
+        if ($fileName != "NULL"){
         $html .= "<a href='$permission'>
                 <div class='navItem'>
                     <img src='img/menu/$img' alt='$fileName'>
                     <p>$fileName</p>
                 </div>
               </a>";
+    }
     }
 
     $html .= "<a href=\"logout.php\">
@@ -77,7 +80,7 @@ function generateMenu(){
                         <p>Log Out</p>
                     </div>
                 </a>";
-
+    
     return $html;
 }
 
