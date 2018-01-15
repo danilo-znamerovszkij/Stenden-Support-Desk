@@ -31,6 +31,35 @@
                 <div class="content">
                     <div class="titleBox"><p>Statistics</p></div>
                     <!-- Beautiful content here -->
+                    <?php
+                    $sql= "select * from category" ;
+                    $result= mysqli_query($conn,$sql);
+                    echo "
+                    <table class='fancy-table'>
+                    <tr> 
+                        <th>Incident type</th>
+                        <th>Times it accoured</th>
+                    </tr>";
+                    
+                    while($row=mysqli_fetch_assoc($result)){
+                        
+                        $incident=$row['category_id'];
+                        $sql2 = "select count(category_id) from incident where category_id=$incident";
+                            $result2=mysqli_query($conn,$sql2);
+                            $row2=mysqli_fetch_assoc($result2);
+                            
+                        echo "
+                        <tr>
+                        <td>{$row['category_name']} </td>
+                        <td>{$row2['count(category_id)']}</td>
+                        </tr>";
+                    }
+                           
+                    
+                    
+                    echo "</table>";
+                    
+                    ?>
                 </div>
             </div>
             <div class="footer">
