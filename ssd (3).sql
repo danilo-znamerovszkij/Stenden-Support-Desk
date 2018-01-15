@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2018 at 03:11 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- Generation Time: Jan 15, 2018 at 12:40 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -96,9 +98,8 @@ CREATE TABLE `incident` (
 --
 
 INSERT INTO `incident` (`incident_id`, `client_id`, `operator_id`, `status_id`, `category_id`, `description`, `solution`, `start_date`, `end_date`) VALUES
-(1, 2, NULL, 1, 3, 'Pooped badly', 'get better loo', '2018-01-10 23:00:00', NULL),
-(2, 2, 1, 6, 3, 'PC crashed', 'Turn off and on', '0000-00-00 00:00:00', NULL),
-(3, 2, 1, 6, 5, 'There is no display after I log in?', 'Make sure your monitor is connected to a power source. After refresh the page. If nothing changes log out of the system and log back in. If the problem persists reinstall the system', '2018-01-12 19:39:13', NULL);
+(1, 2, 1, 2, 2, 'Help it crashed', 'You need to turn it off and on again.', '2018-01-15 11:36:55', NULL),
+(6, 2, 1, 2, 2, 'I need you to do this', 'I did this', '2018-01-15 11:37:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -119,6 +120,20 @@ CREATE TABLE `license` (
 
 INSERT INTO `license` (`id`, `purchase_date`, `contact_id`, `product_name`) VALUES
 (1, '2018-01-12 19:47:48', 2, 'Microsoft Widnows');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `message_id` int(11) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `incident_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `sent_dateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -190,7 +205,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `isEmployee`, `name`, `phone`, `email`, `username`, `password`, `has_maintenance_license`, `position_id`, `contact_id`) VALUES
 (1, 1, 'Rene laan', '051231231231', 'rene.laan@stenden.com', 'rene', 'laan', 0, 3, 1),
-(2, 0, 'Client 1', '2134kj231', 'asdkjh@kjhsdaf.com', 'customer', 'customer', 1, 1, 2);
+(2, 0, 'Client 1', '2134kj231', 'asdkjh@kjhsdaf.com', 'customer', 'customer', 1, 1, 2),
+(3, 0, 'Rob', '0484858583838', 'rob@gmail.com', 'rob', 'rob', 0, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -225,6 +241,14 @@ ALTER TABLE `license`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `incident_fk` (`incident_id`),
+  ADD KEY `user_fk` (`user_id`);
+
+--
 -- Indexes for table `position`
 --
 ALTER TABLE `position`
@@ -253,36 +277,49 @@ ALTER TABLE `users`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `incident_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `incident_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `license`
 --
 ALTER TABLE `license`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
   MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Constraints for dumped tables
 --
@@ -297,11 +334,19 @@ ALTER TABLE `incident`
   ADD CONSTRAINT `operator` FOREIGN KEY (`operator_id`) REFERENCES `users` (`id`);
 
 --
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `incident_fk` FOREIGN KEY (`incident_id`) REFERENCES `incident` (`incident_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `contact_fk` FOREIGN KEY (`contact_id`) REFERENCES `contact` (`contact_id`),
   ADD CONSTRAINT `position_fk` FOREIGN KEY (`position_id`) REFERENCES `position` (`position_id`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

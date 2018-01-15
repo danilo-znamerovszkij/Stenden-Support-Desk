@@ -4,7 +4,7 @@
 
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
+    <head>   
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
         <title>Statistics</title>
