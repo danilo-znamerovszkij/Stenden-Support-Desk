@@ -1,5 +1,39 @@
 <?php
+
 require "php/requirements.php";
+include 'php/conn.php';
+
+
+                
+ if(isset($_POST['submit'])){
+     if((isset($_POST['problem']))&&(!empty($_POST['description']))){
+        
+        $problem = $_POST['problem'];
+        $description = $_POST['description'];
+        
+        }
+        
+        else{
+            echo "You have to complete both the type of problem and the description!";
+            }
+
+ }
+ /*
+ $name = $_SESSION['name'];
+ $sql = "SELECT id FROM users WHERE username = '$username'";
+ $qry = mysqli_query($conn, $sql);
+ $userInfo = mysqli_fetch_assoc($qry);
+
+ $id= $userInfo['id'];
+ 
+ $sql = "SELECT category_id FROM category WHERE category_name = '$problem'";
+ $qry = mysqli_query($conn, $sql);
+ $userInfo = mysqli_fetch_assoc($qry);
+
+ $idp= $userInfo['category_id'];
+ 
+ $sql = "INSERT INTO incident(client_id, status_id, description) VALUES ($id, $idp, $description);";
+ $qry = mysqli_query($conn, $sql);*/
 ?>
 
 <!DOCTYPE HTML>
@@ -29,48 +63,53 @@ require "php/requirements.php";
                         <?= generateMenu() ?>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="titleBox"><p>Submit Ticket</p></div>
+                
+                    <div class="content">
+                        <div class="titleBox"><p>Submit Ticket</p></div>
+                        <div class="titleDivider"></div>
+                        <div class="content1">
+                            <div id="softwareName">Software Name </div>
+                                <div class="line1"></div>
+                                    <div class="mainselection">
+                                        <select name="software" id="input7">
+                                            <option>Financial software</option>    
+                                        </select>
+                                    </div>
 
-                    <div class="content1">
-                        <div id="softwareName">Software Name
-                            <div class="line1"></div>
-                            <div class="mainselection">
-                                <select name="software" id="input7">
-                                    <option>Financial software</option>
-                                    <!--                            <option value="Alabama">Alabama</option>
+                        
+                    
+                        
+                            <div id="problemType"> Problem Type
+                                <div class="line2"></div>
+                                <div class="mainselection">
+                                    <form method="POST" action="">
+                                        <select name="problem" id="input7">
+                                            <option value="" disabled selected>Choose the type</option>
+                                            <option value="wish">Wish</option>
+                                            <option value="query">Query</option>
+                                            <option value="cash">Crash</option>
+                                            <option value="functional">Functional problem</option>
+                                            <option value="technical">Technical problem</option>
+                                        </select>
+                                    </div>
 
-                                                                <option value="Wisconsin">Wisconsin</option>
-                                                                <option value="Wyoming">Wyoming</option>    -->
-                                </select>
+                            </div>
+                            <input type="submit" id="submit" name="submit">
+                        </div>
+
+
+                        <div class="content2">
+                            <div id="pbd">Problem Description
+                                <div class="line3"></div>
+                                    <div class="textWrap">
+                                        <textarea name="description"></textarea>
+                                    </div>
                             </div>
                         </div>
-                        <div id="problemType"> Problem Type
-                            <div class="line2"></div>
-                            <div class="mainselection">
-                                <select name="problem" id="input7">
-                                    <option>Choose the type</option>
-                                    <option value="Alabama">Crash</option>
 
-                                    <option value="Wisconsin">Crash</option>
-                                    <option value="Wyoming">Crash</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <input type="submit" id="submit">
+                </form>
                     </div>
 
-
-                    <div class="content2">
-                        <div id="pbd">Problem Description
-                            <div class="line3"></div>
-                            <textarea></textarea>
-                        </div>
-                    </div>
-
-
-                </div>
             </div>
             <div class="footer">
                 <div class="terms">
