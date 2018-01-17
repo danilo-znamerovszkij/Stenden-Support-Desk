@@ -20,12 +20,6 @@
 
     $tickets = mysqli_query($conn, $sql);
 
-    // if ($_SESSION['userType'] == "Team Leader") {
-    //
-    // }elseif($_SESSION['userType'] == "Operator"){
-    //   .
-    // }
-
     //check with mysqli_fetch_assoc amount of operators and make the thing dynamic on the page
     $userString = "SELECT * FROM users WHERE position_id = 2";
     $userQuery = mysqli_query($conn, $userString);
@@ -100,7 +94,6 @@
                                       <select name='assign' id='input7'>
                                         <option value="NULL" disabled selected>Choose Operator</option>
 
-                                        <!-- add team leader name with his id so he can assign the ticket to himself -->
                                         <?php
                                         echo "<option value=" . $_SESSION['id']. ">" . $_SESSION['name'] . "</option>";
 
@@ -119,13 +112,11 @@
                                     <?php } ?>
 
                                   </form></td>
-
                             </tr>
                         <?php } ?>
 
                         <?php
                         if (isset($_POST['submit'])) { //updating the db
-                          //var_dump($_POST['assign']);
 
                           if ($_SESSION['userType'] == "Team Leader") {
                             $id  = $_POST['id'];
@@ -135,11 +126,7 @@
                             $id  = $_POST['id'];
                             $assignQuery = "UPDATE incident SET operator_id = '{$_SESSION['id']}', status_id = 2 WHERE incident.incident_id =  '$id'";
                           }
-
                           mysqli_query ($conn, $assignQuery);
-
-                          //header("location: tickets.php");
-                          // var_dump ($assignQuery);
                         }
                         ?>
                     </table>
