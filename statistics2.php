@@ -72,6 +72,8 @@ foreach ($QueryResult as $row)
                 </div>
                 <div class="content" style="background-color:#282828;">
                     <div class="titleBox"><p>Statistics</p></div>
+					<div class="tabOpen"><p>Overall Statistics</p></div>
+					<div class="tab"><a href="statistics.php"><p>Detailed Statistics</p></a></div>
                     <!-- Beautiful content here -->
                     <div id="chartdiv1" style="width: 600px; height: 400px;"></div>
                 </div>

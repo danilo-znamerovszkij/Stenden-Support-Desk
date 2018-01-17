@@ -30,6 +30,8 @@
                 </div>
                 <div class="content">
                     <div class="titleBox"><p>Statistics</p></div>
+					<div class="tab"><a href="statistics2.php"><p>Overall Statistics</p></a></div>
+					<div class="tabOpen"><p>Detailed Statistics</p></div>
                     <!-- Beautiful content here -->
                     <?php
                     $sql= "select * from category" ;
