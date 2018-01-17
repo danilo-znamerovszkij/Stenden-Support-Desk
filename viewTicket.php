@@ -5,14 +5,14 @@
 
     // Show different information based on the user type
     if(is_employee()){
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                 INNER JOIN users AS client ON incident.client_id = client.id
                 INNER JOIN category ON incident.category_id = category.category_id
                 INNER JOIN status ON incident.status_id = status.status_id
                 WHERE incident.incident_id = '{$_GET['ticket']}'
                 ORDER BY incident_id DESC";
     } else {
-        $sql = "SELECT * FROM incident 
+        $sql = "SELECT * FROM incident
                 INNER JOIN users ON incident.operator_id = users.id
                 INNER JOIN category ON incident.category_id = category.category_id
                 INNER JOIN status ON incident.status_id = status.status_id
@@ -30,6 +30,8 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <title>View Ticket</title>
     </head>
     <body>
@@ -123,4 +125,3 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
         </div>
     </body>
 </html>
-

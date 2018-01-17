@@ -17,6 +17,8 @@ foreach ($QueryResult as $row)
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <title>Statistics</title>
         <script src="js/amcharts.js" type="text/javascript"></script>
         <script src="js/serial.js" type="text/javascript"></script>
@@ -87,4 +89,3 @@ foreach ($QueryResult as $row)
         </div>
     </body>
 </html>
-

@@ -2,7 +2,7 @@
     require "php/requirements.php";
 
     // Let's get those juicy FAQ's (Questions that are closed)
-    $sql = "SELECT description, solution, category_name FROM incident 
+    $sql = "SELECT description, solution, category_name FROM incident
                 INNER JOIN category ON incident.category_id = category.category_id
                 INNER JOIN status ON incident.status_id = status.status_id
                 WHERE status_name = 'Closed'";
@@ -14,6 +14,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <title>FAQ</title>
     </head>
     <body>

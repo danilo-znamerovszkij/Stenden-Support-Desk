@@ -12,6 +12,8 @@ include 'php/conn.php';
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mainCSS.css">
     <link rel="stylesheet" href="css/submitCSS.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <title>Submit Ticket</title>
 </head>
 <body>
@@ -108,4 +110,3 @@ include 'php/conn.php';
 </div>
 </body>
 </html>
-

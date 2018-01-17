@@ -4,9 +4,11 @@
 
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>   
+    <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <title>Statistics</title>
     </head>
     <body>
@@ -38,29 +40,29 @@
                     $result= mysqli_query($conn,$sql);
                     echo "
                     <table class='fancy-table'>
-                    <tr> 
+                    <tr>
                         <th>Incident type</th>
                         <th>Times it accoured</th>
                     </tr>";
-                    
+
                     while($row=mysqli_fetch_assoc($result)){
-                        
+
                         $incident=$row['category_id'];
                         $sql2 = "select count(category_id) from incident where category_id=$incident";
                             $result2=mysqli_query($conn,$sql2);
                             $row2=mysqli_fetch_assoc($result2);
-                            
+
                         echo "
                         <tr>
                         <td>{$row['category_name']} </td>
                         <td>{$row2['count(category_id)']}</td>
                         </tr>";
                     }
-                           
-                    
-                    
+
+
+
                     echo "</table>";
-                    
+
                     ?>
                 </div>
             </div>
@@ -73,4 +75,3 @@
         </div>
     </body>
 </html>
-
