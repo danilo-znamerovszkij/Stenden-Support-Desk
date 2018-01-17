@@ -222,7 +222,8 @@ input:focus {
 .wrapper #content-wrapper .content .titleBox .tabOpen p{
 	margin: -16px 0px 0px 0px;
 }
-#linkS {
+
+.linkS{
 	color: white;
 }
 

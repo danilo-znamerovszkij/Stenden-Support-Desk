@@ -31,8 +31,8 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div class="titleBox"><p>Statistics</p> 
-					<div class="tab"><p><a href="statistics2.php" id="linkS">Overall Statistics</a></div>
+                    <div class="titleBox"><p style="margin: -10px 0px 10px 0px">Statistics</p> 
+					<div class="tab"><p><a href="statistics2.php" class="linkS">Overall Statistics</a></div>
 					<div class="tabOpen"><p>Detailed Statistics</p></div></div>
                     <!-- Beautiful content here -->
                     <?php
@@ -68,7 +68,7 @@
             </div>
             <div class="footer">
                 <div class="terms">
-                    <a href="terms.php"><p>Terms and conditions</p></a>
+                    <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>

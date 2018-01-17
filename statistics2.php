@@ -6,8 +6,7 @@ $query = mysqli_query($conn, "SELECT count(*) AS amount, category.category_name 
         . "category.category_id = incident.category_id GROUP BY category.category_name");
 $QueryResult = mysqli_fetch_all($query);
 $jsVAR = "";
-foreach ($QueryResult as $row)
-{
+foreach ($QueryResult as $row) {
     $jsVAR .= "{\"category_id\":\"{$row[1]}\", \"category_name\": \"{$row[0]}\"},";
 }
 ?>
@@ -73,16 +72,16 @@ foreach ($QueryResult as $row)
                     </div>
                 </div>
                 <div class="content" style="background-color:#282828;">
-                   <div class="titleBox"><p>Statistics</p>
-					<div class="tabOpen"><p>Overall Statistics</p></div>
-					<div class="tab"><p><a href="statistics.php" id="linkS">Detailed Statistics</a></p></div></div>
+                    <div class="titleBox"><p style="margin: -10px 0px 10px 0px">Statistics</p>
+                        <div class="tabOpen"><p>Overall Statistics</p></div>
+                        <div class="tab"><p><a href="statistics.php" class="linkS">Detailed Statistics</a></p></div></div>
                     <!-- Beautiful content here -->
                     <div id="chartdiv1" style="width: 600px; height: 400px;"></div>
                 </div>
             </div>
             <div class="footer">
                 <div class="terms">
-                    <p>Terms and conditions</p>
+                    <a href="terms.php" class="linkS"><p>Terms and conditions</p>
                 </div>
                 <div class="copyright"></div>
             </div>
