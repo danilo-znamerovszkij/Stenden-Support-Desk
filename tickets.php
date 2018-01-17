@@ -20,6 +20,16 @@
 
     $tickets = mysqli_query($conn, $sql);
 
+    // if ($_SESSION['userType'] == "Team Leader") {
+    //
+    // }elseif($_SESSION['userType'] == "Operator"){
+    //   .
+    // }
+
+    //check with mysqli_fetch_assoc amount of operators and make the thing dynamic on the page
+    $userString = "SELECT * FROM users WHERE position_id = 2";
+    $userQuery = mysqli_query($conn, $userString);
+
 
 
 ?>
@@ -72,7 +82,9 @@
                             <th>Assign Ticket</th>
                         </tr>
 
-                        <?php while ($row = mysqli_fetch_assoc($tickets)){ ?>
+                        <?php while ($row = mysqli_fetch_assoc($tickets)){
+                          $userQuery = mysqli_query($conn, $userString);
+                           ?>
                             <tr>
                                 <td><?= $row['incident_id'] ?></td>
                                 <td><?= $row['name'] ?></td>
@@ -82,22 +94,52 @@
                                 <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
                                 <td><form action="tickets.php" method="post">
                                     <input type="hidden" name="id" value="<?= $row['incident_id'] ?>">
-                                    <input type="submit" value="Assign to me" name="submit">
+
+                                    <?php
+                                    if ($_SESSION['userType'] == "Team Leader"){?> <!-- team leader view -->
+                                      <select name='assign' id='input7'>
+                                        <option value="NULL" disabled selected>Choose Operator</option>
+
+                                        <!-- add team leader name with his id so he can assign the ticket to himself -->
+                                        <?php
+                                        echo "<option value=" . $_SESSION['id']. ">" . $_SESSION['name'] . "</option>";
+
+                                        while($row = mysqli_fetch_assoc($userQuery)){
+
+                                          echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+                                        }
+
+                                        mysqli_free_result($row);
+
+                                      echo "</select>";
+                                      echo "<input style='margin-left:10px;' type='submit' value='Assign' name='submit'>";
+                                    }else{//operator view
+                                      ?><input type="submit" value="Assign to me" name="submit">
+                                      <!-- <input type="submit" value="Assign to me" name="submit"> -->
+                                    <?php } ?>
+
                                   </form></td>
 
                             </tr>
                         <?php } ?>
 
                         <?php
-                        if (isset($_POST['submit'])) {
+                        if (isset($_POST['submit'])) { //updating the db
+                          //var_dump($_POST['assign']);
+
+                          if ($_SESSION['userType'] == "Team Leader") {
+                            $id  = $_POST['id'];
+                            $assignQuery = "UPDATE incident SET operator_id = '{$_POST['assign']}', status_id = 2 WHERE incident.incident_id =  '$id'";
+                          }else{
 
                             $id  = $_POST['id'];
                             $assignQuery = "UPDATE incident SET operator_id = '{$_SESSION['id']}', status_id = 2 WHERE incident.incident_id =  '$id'";
+                          }
 
                           mysqli_query ($conn, $assignQuery);
 
-                          header("location: tickets.php");
-                          var_dump ($assignQuery);
+                          //header("location: tickets.php");
+                          // var_dump ($assignQuery);
                         }
                         ?>
                     </table>
