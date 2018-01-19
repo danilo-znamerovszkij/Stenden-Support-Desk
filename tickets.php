@@ -30,7 +30,7 @@
                         INNER JOIN users ON incident.client_id = users.id
                         INNER JOIN category ON incident.category_id = category.category_id
                         INNER JOIN status ON incident.status_id = status.status_id
-                        WHERE incident.status_id IN (2,3,4,5)
+                        WHERE incident.status_id IN (2,3,4)
                         ORDER BY start_date ASC";
 
     } else {
