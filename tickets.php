@@ -129,7 +129,7 @@
                                           echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
                                         }
 
-                                        mysqli_free_result($row);
+                                        mysqli_free_result($userQuery);
 
                                       echo "</select>";
                                       echo "<input style='margin-left:10px;' type='submit' value='Assign' name='submit'>";
