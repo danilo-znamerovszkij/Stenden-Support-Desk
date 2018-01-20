@@ -1,5 +1,29 @@
 <?php
     require "php/requirements.php";
+    include 'php/conn.php';
+    
+     
+        $sql = "SELECT * FROM MESSAGES";
+    
+        $QueryResult = mysqli_query($conn, $sql);       
+        $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+
+         while ($row = mysqli_fetch_assoc($QueryResult))
+            {
+               
+                $user_id = $row['user_id'];
+                $message_id = $row['message_id'];
+                $messages = "SELECT * FROM messages where user_id='$user_id';";
+                
+                $message = $row['message'];
+                $incident_id = $row['incident_id'];
+                
+                
+
+             
+            }
+
+if($messages == NULL) die('You have no messages');
 ?>
 
 <!DOCTYPE HTML>
@@ -31,6 +55,19 @@
                 <div class="content">
                     <div class="titleBox"><p>Messages</p></div>
                     <!-- Beautiful content here -->
+                    
+                    <?php
+                   
+                    foreach($messages as $messages)
+                    {
+                        echo "<p>$message</p>";
+                        echo "<p>$incident_id</p>";
+                        echo "<p>$user_id</p>";
+                        
+                    }
+                    ?>
+
+                    
                 </div>
             </div>
             <div class="footer">
