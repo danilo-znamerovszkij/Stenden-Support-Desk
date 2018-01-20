@@ -16,11 +16,11 @@ $permissionTable = [
         "delete" => []
     ],
     "employee" => [
-        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php', 'messages.php','terms.php'],
+        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php','statistics2.php', 'messages.php','terms.php'],
         "edit" => [],
     ],
     "team leader" => [
-        "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php','terms.php'],
+        "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php', 'statistics2.php','terms.php'],
         "edit" => ['viewTicket.php'],
     ]
     // ... and much more of those beautiful account types

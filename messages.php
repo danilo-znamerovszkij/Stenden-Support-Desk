@@ -31,6 +31,8 @@ if($messages == NULL) die('You have no messages');
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/mainCSS.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <title>Messages</title>
     </head>
     <body>
@@ -79,4 +81,3 @@ if($messages == NULL) die('You have no messages');
         </div>
     </body>
 </html>
-

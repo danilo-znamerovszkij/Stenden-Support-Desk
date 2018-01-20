@@ -200,6 +200,33 @@ input:focus {
     font-size: 18px;
 }
 
+.wrapper #content-wrapper .content .titleBox .tabOpen{
+	height: 25px;
+	width: 50%;
+	background-color:  #94b3d1;
+	font-size: 17pt;
+	float:left;
+	margin: -25px 0px 10px 0px;
+}
+.wrapper #content-wrapper .content .titleBox .tab p{
+	margin: -16px 0px 0px 0px;
+}
+.wrapper #content-wrapper .content .titleBox .tab{
+	height: 25px;
+	width: 50%;
+	background-color: #80a3c8;
+	font-size: 15px;
+	float: right;
+	margin: -25px 0px 0px 0px;
+}
+.wrapper #content-wrapper .content .titleBox .tabOpen p{
+	margin: -16px 0px 0px 0px;
+}
+
+.linkS{
+	color: white;
+}
+
 .wrapper .footer {
     width: 100%;
     float: left;
