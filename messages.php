@@ -3,27 +3,6 @@
     include 'php/conn.php';
     
      
-        $sql = "SELECT * FROM MESSAGES";
-    
-        $QueryResult = mysqli_query($conn, $sql);       
-        $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-
-         while ($row = mysqli_fetch_assoc($QueryResult))
-            {
-               
-                $user_id = $row['user_id'];
-                $message_id = $row['message_id'];
-                $messages = "SELECT * FROM messages where user_id='$user_id';";
-                
-                $message = $row['message'];
-                $incident_id = $row['incident_id'];
-                
-                
-
-             
-            }
-
-if($messages == NULL) die('You have no messages');
 ?>
 
 <!DOCTYPE HTML>
@@ -59,47 +38,62 @@ if($messages == NULL) die('You have no messages');
                     <!-- Beautiful content here -->
                     
                     <?php
-<<<<<<< HEAD
-                    
-                      $messages = 'SELECT * FROM messages where user_id='$_SESSION["user_id"]' ORDER BY sent_dateTime desc;';
-                      $QueryResult2 = mysqli_query($conn, $messages);       
-                      $row5 = mysqli_fetch_assoc(mysqli_query($conn, $messages));
-                    
-                    echo "<div id = 'message'>";
-                    while ($row = mysqli_fetch_assoc($QueryResult))
-                    {
-                        $user_id = $row['user_id'];
-                        $message = $row['message'];
-                        $message_id = $row['message_id'];
-                        $incident_id = $row['incident_id'];
+                        
+                        
+                      
                        
+                        
+                                $currentId = $_SESSION['id'];
+                       
+                               
+                                  if(is_employee())
+                                    {
+                                        $sql = "SELECT * FROM messages";
+                                               
+                                    } 
+                                    else 
+                                    {
+                                        $sql = "SELECT * FROM incident";
+                                                
+                                    }
+                                         
+                               // $messages = "SELECT messages.message_id, messages.message FROM messages JOIN incident ON messages.incident_id;";
+                                $QueryResult2 = mysqli_query($conn, $messages);       
+                                $row2 = mysqli_fetch_assoc(mysqli_query($conn, $messages));
+                                
+                                
+                                $user_id = $row2['user_id'];
+                                $message_id = $row2['message_id'];
 
+                                while ($row2 = mysqli_fetch_assoc($QueryResult2))
+                                {
+                              
+
+                                   echo"<article>";
+                        
+                       
+                                    echo "<p>{$row2['user_id']}</p>";
+                                    echo "<p>{$row2['message']}</p>";
+                                    echo "<p>{$row2['sent_dateTime']}</p>";
+
+                                    echo"</article>";
+                                    
+                                    if($messages == NULL) die('You have no messages');
+                                }
+
+                            
+
+                            
                         
 
-                        echo"<article>";
-                        
-                       
-
-                        echo "<p>{$row5['message']}</p>";
-                        echo "<p>{$row5['sent_dateTime']}</p>";
-                       
-                        echo"</article>";
+                     
                 
                 
              
-                }
+                
                    
-                    echo "</div>";
-=======
                    
-                    foreach($messages as $messages)
-                    {
-                        echo "<p>$message</p>";
-                        echo "<p>$incident_id</p>";
-                        echo "<p>$user_id</p>";
-                        
-                    }
->>>>>>> e7587ef8d51f216cdada2d6f6c78e623e05ed8b4
+
                     ?>
 
                     
