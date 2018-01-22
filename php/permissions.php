@@ -15,8 +15,13 @@ $permissionTable = [
         "edit" => ['viewTicket.php'],
         "delete" => []
     ],
-    "employee" => [
-        "view" => ['dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php', 'statistics.php','statistics2.php', 'messages.php','terms.php'],
+    "no license" => [
+        "view" => ['faq.php', 'submitTicket.php', 'MyTickets.php', 'messages.php', 'terms.php'],
+        "edit" => ['viewTicket.php'],
+        "delete" => []
+    ],
+    "operator" => [
+        "view" => ['tickets.php', 'MyTickets.php', 'messages.php','terms.php'],
         "edit" => [],
     ],
     "team leader" => [

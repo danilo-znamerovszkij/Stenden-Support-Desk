@@ -12,7 +12,7 @@ if(!isset($_SESSION['username'])){
 
 // Can the user see this page?
 if(!user_can_see_page()) {
-    if($_SESSION['userType'] == "operator"){
+    if(($_SESSION['userType'] == "Operator")||($_SESSION['userType'] == "team leader")||($_SESSION['userType'] == "security operator")){
         redirect('tickets.php');
     }
 
