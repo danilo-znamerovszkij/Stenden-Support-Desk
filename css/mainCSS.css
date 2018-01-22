@@ -286,3 +286,37 @@ input:focus {
 }
 
 /* END OF VIEW TICKETS PAGE */
+
+#message-wrapper {
+    width: 600px;
+    padding: 20px;
+}
+#messages article {
+    width: 100%;
+    float: left;
+}
+
+#messages article .message {
+    width: 100%;
+    padding: 30px;
+    background: #80A3C8;
+    color: white;
+    position: relative;
+}
+#messages article .message.isMe {
+    background: #01448B
+}
+
+#messages article .message .name {
+    font-weight: bold;
+    line-height: 20px;
+}
+#messages article .message .message-content {
+    padding: 20px;
+    padding-left: 40px;
+}
+#messages article .message .timeSent {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
