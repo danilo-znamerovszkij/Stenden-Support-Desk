@@ -36,7 +36,7 @@
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                    <div class="titleDivider"></div>
+                   
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -46,14 +46,14 @@
                     <!-- Beautiful content here -->
                     
                     <?php
+                       
+                    echo "<div id = 'message'>";
+                    while ($row = mysqli_fetch_assoc($QueryResult))
+                    {
                         $user_id = $row['user_id'];
                         $message = $row['message'];
                         $message_id = $row['message_id'];
                         $incident_id = $row['incident_id'];
-                    
-                    while ($row = mysqli_fetch_assoc($QueryResult))
-                    {
-                       
                        
                         $messages = 'SELECT * FROM messages where user_id="$row["user_id"]" ORDER BY sent_dateTime desc;';
 
@@ -72,7 +72,7 @@
              
                 }
                    
-                    
+                    echo "</div>";
                     ?>
 
                     
