@@ -9,7 +9,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT id, name, username, position_Role  FROM users
+        $sql = "SELECT id, name, username, position_Role, password  FROM users
                 INNER JOIN position ON users.position_id = position.position_id
                 WHERE username = '$username' AND password = '$password'";
         $qry = mysqli_query($conn, $sql);
