@@ -46,7 +46,11 @@
                     <!-- Beautiful content here -->
                     
                     <?php
-                       
+                    
+                      $messages = 'SELECT * FROM messages where user_id='$_SESSION["user_id"]' ORDER BY sent_dateTime desc;';
+                      $QueryResult2 = mysqli_query($conn, $messages);       
+                      $row5 = mysqli_fetch_assoc(mysqli_query($conn, $messages));
+                    
                     echo "<div id = 'message'>";
                     while ($row = mysqli_fetch_assoc($QueryResult))
                     {
@@ -55,7 +59,6 @@
                         $message_id = $row['message_id'];
                         $incident_id = $row['incident_id'];
                        
-                        $messages = 'SELECT * FROM messages where user_id="$row["user_id"]" ORDER BY sent_dateTime desc;';
 
                         
 
@@ -63,8 +66,8 @@
                         
                        
 
-                        echo "<p>{$row['message']}</p>";
-                        echo "<p>{$row['sent_dateTime']}</p>";
+                        echo "<p>{$row5['message']}</p>";
+                        echo "<p>{$row5['sent_dateTime']}</p>";
                        
                         echo"</article>";
                 
