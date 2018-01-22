@@ -286,3 +286,10 @@ input:focus {
 }
 
 /* END OF VIEW TICKETS PAGE */
+article
+{
+    padding:10px;
+    height:auto;
+    width:50%;
+    background-color:black;
+}

@@ -46,16 +46,16 @@
                     <!-- Beautiful content here -->
                     
                     <?php
-                    
-                    
-                    while ($row = mysqli_fetch_assoc($QueryResult))
-                    {
                         $user_id = $row['user_id'];
                         $message = $row['message'];
                         $message_id = $row['message_id'];
                         $incident_id = $row['incident_id'];
+                    
+                    while ($row = mysqli_fetch_assoc($QueryResult))
+                    {
                        
-                        $messages = "SELECT * FROM messages where user_id='$user_id' ORDER BY sent_dateTime desc;";
+                       
+                        $messages = 'SELECT * FROM messages where user_id="$row["user_id"]" ORDER BY sent_dateTime desc;';
 
                         
 
