@@ -16,20 +16,26 @@
 
         // Check to see if there is a valid combination, which means that a user exists
         if($qry->num_rows > 0){
+			
+			$userInfo = mysqli_fetch_assoc($qry);
+			
+			$hashedPwdCheck = password_verify($password,$userInfo['password']);
 
-            $userInfo = mysqli_fetch_assoc($qry);
+            if ($hashedPwdCheck == true){
+				$_SESSION['id'] = $userInfo['id'];
+				$_SESSION['name'] = $userInfo['name'];
+				$_SESSION['username'] = $userInfo['username'];
+				$_SESSION['userType'] = $userInfo['position_Role'];
 
-            $_SESSION['id'] = $userInfo['id'];
-            $_SESSION['name'] = $userInfo['name'];
-            $_SESSION['username'] = $userInfo['username'];
-            $_SESSION['userType'] = $userInfo['position_Role'];
-
-            if(is_employee()){
-                redirect('tickets.php');
-            } else {
-                redirect('faq.php');
-            }
-
+				if(is_employee()){
+					redirect('tickets.php');
+				} else {
+					redirect('faq.php');
+				}
+			} else {
+				// Nope, the pwd doesn't match. Let's inform them.
+				$error = "Username or login is not correct.";
+			}
         } else {
             // Nope, there is no users. Let's inform them.
             $error = "Username or login is not correct.";
