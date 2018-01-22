@@ -8,7 +8,7 @@ while ($row = mysqli_fetch_assoc($result)){
 	
 	$PWD = $row['password'];
 	$ID = $row['id'];
-	echo $ID ."<br>";
+	echo $ID;
 	$hashedpwd = password_hash($PWD, PASSWORD_DEFAULT);
 	$sqlU = "UPDATE password SET password='$hashedpwd' WHERE id='$ID'";
 	mysqli_query($conn, $sqlU);
