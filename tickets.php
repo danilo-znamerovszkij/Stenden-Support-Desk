@@ -1,5 +1,9 @@
 <?php
-    require "php/requirements.php";
+    session_start();
+
+require "php/conn.php";
+require "php/permissions.php";
+require "php/functions.php";
 
     if (isset($_POST['submit'])&&isset($_POST['assign'])) { //updating the db
 
@@ -183,9 +187,10 @@
                                         <td><a href='ViewTicket.php?ticket=<?= $row1['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
                                         <td> <?= $opName['name'] ?></td>
                                     </tr>
-                            </table>
+                            
                                 <?php } ?>
                               <?php } ?>
+                            </table>
         </div>
             
 
@@ -193,6 +198,7 @@
             </div>
             <div class="footer">
                 <div class="terms">
+                    
                     <p>Terms and conditions</p>
                 </div>
                 <div class="copyright"></div>

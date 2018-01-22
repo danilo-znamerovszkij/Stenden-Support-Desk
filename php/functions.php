@@ -8,7 +8,7 @@ function user_can_see_page(){
 
 // Determines if a user is an employee
 function is_employee(){
-    return !($_SESSION['userType'] == "Client");
+    return !($_SESSION['userType'] == "Client"||$_SESSION['userType']== "No license");
 }
 
 // Does the user have a valid license?

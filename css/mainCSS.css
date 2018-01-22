@@ -28,17 +28,6 @@
     -moz-box-sizing: border-box;
 }
 
-article
-{
-    padding:10px;
-    height:auto;
-    width:100%;
-    background-color:#01366d;
-    float:left;
-    clear:left;
-    margin-bottom:20px;
-}
-
 img{
     max-width:100%;
     max-height:100%;

@@ -8,9 +8,22 @@
         $QueryResult = mysqli_query($conn, $sql);       
         $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
-         
+         while ($row = mysqli_fetch_assoc($QueryResult))
+            {
+               
+                $user_id = $row['user_id'];
+                $message_id = $row['message_id'];
+                $messages = "SELECT * FROM messages where user_id='$user_id';";
+                
+                $message = $row['message'];
+                $incident_id = $row['incident_id'];
+                
+                
 
+             
+            }
 
+if($messages == NULL) die('You have no messages');
 ?>
 
 <!DOCTYPE HTML>
@@ -36,7 +49,7 @@
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                   
+                    <div class="titleDivider"></div>
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -46,6 +59,7 @@
                     <!-- Beautiful content here -->
                     
                     <?php
+<<<<<<< HEAD
                     
                       $messages = 'SELECT * FROM messages where user_id='$_SESSION["user_id"]' ORDER BY sent_dateTime desc;';
                       $QueryResult2 = mysqli_query($conn, $messages);       
@@ -76,6 +90,16 @@
                 }
                    
                     echo "</div>";
+=======
+                   
+                    foreach($messages as $messages)
+                    {
+                        echo "<p>$message</p>";
+                        echo "<p>$incident_id</p>";
+                        echo "<p>$user_id</p>";
+                        
+                    }
+>>>>>>> e7587ef8d51f216cdada2d6f6c78e623e05ed8b4
                     ?>
 
                     

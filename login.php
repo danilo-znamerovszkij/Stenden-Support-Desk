@@ -8,34 +8,28 @@
 
         $username = $_POST['username'];
         $password = $_POST['password'];
-       
-        $sql = "SELECT id, name, username, position_Role, password  FROM users
+
+        $sql = "SELECT id, name, username, position_Role  FROM users
                 INNER JOIN position ON users.position_id = position.position_id
-                WHERE username = '$username' ";
+                WHERE username = '$username' AND password = '$password'";
         $qry = mysqli_query($conn, $sql);
-        $hashed_password="";   
+
         // Check to see if there is a valid combination, which means that a user exists
         if($qry->num_rows > 0){
-			
-			$userInfo = mysqli_fetch_assoc($qry);
-			$hashed_password=$userInfo['password'];
-			$hashedPwdCheck = password_verify($password,$hashed_password);
 
-            if ($hashedPwdCheck == true){
-				$_SESSION['id'] = $userInfo['id'];
-				$_SESSION['name'] = $userInfo['name'];
-				$_SESSION['username'] = $userInfo['username'];
-				$_SESSION['userType'] = $userInfo['position_Role'];
+            $userInfo = mysqli_fetch_assoc($qry);
 
-				if(is_employee()){
-					redirect('tickets.php');
-				} else {
-					redirect('faq.php');
-				}
-			} else {
-				// Nope, the pwd doesn't match. Let's inform them.
-				$error = "Username or login is not correct.";
-			}
+            $_SESSION['id'] = $userInfo['id'];
+            $_SESSION['name'] = $userInfo['name'];
+            $_SESSION['username'] = $userInfo['username'];
+            $_SESSION['userType'] = $userInfo['position_Role'];
+
+            if(is_employee()){
+                redirect('tickets.php');
+            } else {
+                redirect('faq.php');
+            }
+
         } else {
             // Nope, there is no users. Let's inform them.
             $error = "Username or login is not correct.";
