@@ -198,7 +198,7 @@ require "php/functions.php";
             </div>
             <div class="footer">
                 <div class="terms">
-                    <?php var_dump($_SESSION); ?>
+                    
                     <p>Terms and conditions</p>
                 </div>
                 <div class="copyright"></div>
