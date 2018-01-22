@@ -8,18 +8,18 @@
 
         $username = $_POST['username'];
         $password = $_POST['password'];
-
+       
         $sql = "SELECT id, name, username, position_Role, password  FROM users
                 INNER JOIN position ON users.position_id = position.position_id
-                WHERE username = '$username' AND password = '$password'";
+                WHERE username = '$username' ";
         $qry = mysqli_query($conn, $sql);
-
+        $hashed_password="";   
         // Check to see if there is a valid combination, which means that a user exists
         if($qry->num_rows > 0){
 			
 			$userInfo = mysqli_fetch_assoc($qry);
-			
-			$hashedPwdCheck = password_verify($password,$userInfo['password']);
+			$hashed_password=$userInfo['password'];
+			$hashedPwdCheck = password_verify($password,$hashed_password);
 
             if ($hashedPwdCheck == true){
 				$_SESSION['id'] = $userInfo['id'];
