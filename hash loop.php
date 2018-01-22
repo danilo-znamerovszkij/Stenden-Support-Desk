@@ -4,6 +4,7 @@ require "php/requirements.php";
 $sql= "SELECT id,password FROM users"
 $result =mysqli_query($conn,$sql);
 
+echo "lol";
 while ($row = mysqli_fetch_assoc($result)){
 	
 	$PWD = $row['password'];
