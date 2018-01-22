@@ -1,7 +1,7 @@
 <?php
     require "php/requirements.php";
 
-    if (isset($_POST['submit'])) { //updating the db
+    if (isset($_POST['submit'])&&isset($_POST['assign'])) { //updating the db
 
       if ($_SESSION['userType'] == "Team Leader") {
         $id  = $_POST['id'];
@@ -118,6 +118,8 @@
 
                                     <?php
                                     if ($_SESSION['userType'] == "Team Leader"){?> <!-- team leader view -->
+                        
+
                                       <select name='assign' id='input7'>
                                         <option value="NULL" disabled selected>Choose Operator</option>
 
@@ -133,6 +135,7 @@
 
                                       echo "</select>";
                                       echo "<input style='margin-left:10px;' type='submit' value='Assign' name='submit'>";
+
                                     }else{//operator view
                                       ?><input type="submit" value="Assign to me" name="submit">
                                       <!-- <input type="submit" value="Assign to me" name="submit"> -->
