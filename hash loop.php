@@ -1,7 +1,7 @@
 <?php
-require "php/requirements.php";
-
-$sql= "SELECT id,password FROM users"
+echo "open";
+$conn = mysqli_connect("localhost", "root", "", "ssd") or die('We\'re sorry. The database connection could not be established.');
+$sql= "SELECT id,password FROM users";
 $result =mysqli_query($conn,$sql);
 
 echo "lol";
@@ -14,5 +14,5 @@ while ($row = mysqli_fetch_assoc($result)){
 	$sqlU = "UPDATE password SET password='$hashedpwd' WHERE id='$ID'";
 	mysqli_query($conn, $sqlU);
 }
-
+echo "close";
 ?>
