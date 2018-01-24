@@ -24,6 +24,7 @@
 
 $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
+<<<<<<< HEAD
 if($ticket == NULL) die('There is no ticket associated with the given ID.');
      if(is_employee()==TRUE){  
    
@@ -68,6 +69,9 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
      }
      }
                         
+=======
+//if($ticket == NULL) die('There is no ticket associated with the given ID.');
+>>>>>>> 4838a42ba77dcb9e50b9873123554167712e074a
 
 ?>
 <!DOCTYPE HTML>
@@ -173,3 +177,31 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
         </div>
     </body>
 </html>
+<<<<<<< HEAD
+=======
+<?php
+     if(is_employee()==TRUE){  
+   
+                            if (isset($_POST['submit'])) {
+               
+                                //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
+
+                                $problem = $_POST['solution'];
+                                $description = $_POST['category_id'];
+                                $status = $_POST['status_id'];
+                        /*PREPARED STATEMENTS FOR ADDING TICKETS*/
+                                $sql = "UPDATE incident set solution = ?, status_id = ?, category_id = ?";
+//                                $sql = "INSERT INTO incident(status_id, solution, description) VALUES (?, ?, ?) WHERE incident_id = '{$ticket['incident_id']}';";
+                                $stmt = mysqli_stmt_init($conn);
+                                mysqli_stmt_prepare($stmt, $sql);
+                                mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_close($stmt);
+                                
+                            } else {
+                                echo "You have to complete both the type of problem and the description!";
+                                }
+     }
+                        
+                        ?>
+>>>>>>> 4838a42ba77dcb9e50b9873123554167712e074a

@@ -2,7 +2,7 @@
 
 require "php/requirements.php";
 include 'php/conn.php';
-
+$errorFlag = "";
 
 ?>
 
@@ -24,6 +24,30 @@ include 'php/conn.php';
         </div>
         <p>Stenden eHelp</p>
     </div>
+     <?php
+            if (isset($_POST['submit'])) {
+                if ((isset($_POST['problem'])) && (!empty($_POST['description']))) {
+
+                    $problem = $_POST['problem'];
+                    $description = $_POST['description'];
+/*        PREPARED STATEMENTS FOR ADDING TICKETS*/
+                    $sql = "INSERT INTO incident(client_id, category_id, description) VALUES (?, ?, ?);";
+                    $stmt = mysqli_stmt_init($conn);
+                    mysqli_stmt_prepare($stmt, $sql);
+                    mysqli_stmt_bind_param($stmt, "sss", $_SESSION['id'], $problem, $_POST['description']);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_close($stmt);
+
+                    $errorFlag = "You successfully added a ticket";
+                   
+                } else {
+                    $errorFlag = "Please fill in all the required fields";
+                   
+                }
+
+            }
+            
+            ?>
     <div id="content-wrapper">
         <div id="sidebar">
             <div class="userDetails">
@@ -71,32 +95,15 @@ include 'php/conn.php';
                     <div class="line3"></div>
                     <div class="textWrap">
                         <textarea name="description"></textarea>
+                         <p><?= $errorFlag; ?></p>
                     </div>
+                    
+                   
                 </div>
             </div>
 
-            <?php
-            if (isset($_POST['submit'])) {
-                if ((isset($_POST['problem'])) && (!empty($_POST['description']))) {
-
-                    $problem = $_POST['problem'];
-                    $description = $_POST['description'];
-/*        PREPARED STATEMENTS FOR ADDING TICKETS*/
-                    $sql = "INSERT INTO incident(client_id, category_id, description) VALUES (?, ?, ?);";
-                    $stmt = mysqli_stmt_init($conn);
-                    mysqli_stmt_prepare($stmt, $sql);
-                    mysqli_stmt_bind_param($stmt, "sss", $_SESSION['id'], $problem, $_POST['description']);
-                    mysqli_stmt_execute($stmt);
-                    mysqli_stmt_close($stmt);
-
-                    echo "You successfully added a ticket";
-                } else {
-                    echo "You have to complete both the type of problem and the description!";
-                }
-
-            }
-            ?>
-
+           
+          
             </form>
         </div>
 
