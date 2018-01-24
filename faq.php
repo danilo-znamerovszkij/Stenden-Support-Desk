@@ -42,16 +42,40 @@
 
                     <?php if(has_license()){ ?>
                         <div class="faq">
+                            <h3>What do I do when I can’t see my database?</h3>
+                            <p>Answer: Log out of the system and then log back in. If the problem persists please send a ticket to us</p>
+                            <br>
+                            <h3>There is no display after I log in?</h3>
+                            <p>Answer: Make sure you monitor is connected to a power source. After refresh the page. If nothing changes log out of the system and log back in. If the problem persists reinstall the system</p>
+                            <br>
+                            <h3>What if my problem is not in the available tickets?</h3>
+                            <p>Answer (Only applies to those with a maintenance license): If you scroll to the bottom of the page you will see a section where you can add a ticket yourself with your own descriptions</p>
+                            <br>
+                            <h3>What do I do if my ticket does not submit?</h3>
+                            <p>Answer (Only applies to those with a maintenance license): Refresh the page, if the problem persists then log out and log back into the system</p>
+                            <br>
+                            <h3>What do I do if my backup is lost?</h3>
+                            <p>Answer: Send us a ticket and we will re upload your backup into the system<p>
+                            <br>
+                            <h3>I am unable to see the picture of the person working on my ticket</h3>
+                            <p>Answer (Only applies to those with a maintenance license): Refresh the page, if nothing changes log out of the system and log back in. If the problem persists send us a ticket</p>
+                            <br>
+                            <h3>No one has take (Only applies to those with a maintenance license)n my ticket</h3>
+                            <p>Answer: If this occurs it means our staff is overwhelmed please be patient and we will get to your ticket as soon as possible</p>
+                            <br>
+                            <h3>What if my details are incorrect</h3>
+                            <p>Answer: Send us a ticket within the correct information and we will update your details</p>
 
-                            <?php if($faqs->num_rows == 0){ ?>
+
+                            <?php /*if($faqs->num_rows == 0){ ?>
                                 <p>Sorry. Right now there are no FAQ's yet.</p>
                             <?php } ?>
                             <?php while($row = mysqli_fetch_assoc($faqs)){ ?>
                                 <article>
                                     <h2>Q: <?= $row['description'] ?> (<?= $row['category_name'] ?>)</h2>
                                     <p>A: <?= $row['solution'] ?></p>
-                                </article>
-                            <?php } ?>
+                                </article>*/
+                             ?>
 
 
                             <!--                  <article>-->
@@ -96,7 +120,7 @@
                 </div>
                 <div class="footer">
                     <div class="terms">
-                        <p>Terms and conditions</p>
+                         <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                     </div>
                     <div class="copyright"></div>
                 </div>

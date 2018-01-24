@@ -72,11 +72,11 @@
 
                             <?php while ($row = mysqli_fetch_assoc($qry)){ ?>
                                 <tr>
-                                    <td><?= $row['incident_id'] ?></td>
-                                    <td><?= $row['name'] ?></td>
-                                    <td><?= $row['start_date'] ?></td>
-                                    <td><?= $row['category_name'] ?></td>
-                                    <td><?= $row['status_name'] ?></td>
+                                    <td><?= escape($row['incident_id']) ?></td>
+                                    <td><?= escape($row['name']) ?></td>
+                                    <td><?= escape($row['start_date']) ?></td>
+                                    <td><?= escape($row['category_name']) ?></td>
+                                    <td><?= escape($row['status_name']) ?></td>
                                     <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
                                 </tr>
                             <?php } ?>
@@ -88,7 +88,7 @@
             </div>
             <div class="footer">
                 <div class="terms">
-                    <p>Terms and conditions</p>
+                     <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>
