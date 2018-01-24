@@ -80,7 +80,7 @@ require "php/functions.php";
                     <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                     <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                 </div>
-                <div class="titleDivider"></div>
+                
                 <div class="navWrapper">
                     <?= generateMenu() ?>
                 </div>
@@ -152,7 +152,7 @@ require "php/functions.php";
 
                 <!-- Secondary table Start -->
 
-                  <?php if($tickets->num_rows != 0) { ?>
+                  <?php if($tickets->num_rows != 0 && $_SESSION['userType'] == 'Team Leader') { ?>
 
                             <table class="fancy-table">
                               <div class="titleBox"><p>All assigned tickets</p></div>

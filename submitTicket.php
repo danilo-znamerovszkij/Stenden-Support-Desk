@@ -30,7 +30,7 @@ include 'php/conn.php';
                 <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                 <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
             </div>
-            <div class="titleDivider"></div>
+           
             <div class="navWrapper">
                 <?= generateMenu() ?>
             </div>
@@ -38,7 +38,7 @@ include 'php/conn.php';
 
         <div class="content">
             <div class="titleBox"><p>Submit Ticket</p></div>
-            <div class="titleDivider"></div>
+           
             <div class="content1">
                 <div id="softwareName">Software Name</div>
                 <div class="line1"></div>

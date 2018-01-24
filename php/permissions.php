@@ -17,12 +17,12 @@ $permissionTable = [
     ],
     "no license" => [
         "view" => ['faq.php', 'terms.php'],
-        "edit" => ['viewTicket.php'],
+        "edit" => [],
         "delete" => []
     ],
     "operator" => [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php','terms.php'],
-        "edit" => [],
+        "edit" => ['viewTicket.php'],
     ],
     "team leader" => [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php', 'statistics2.php','terms.php'],
