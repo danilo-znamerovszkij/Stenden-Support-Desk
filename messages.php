@@ -3,27 +3,6 @@
     include 'php/conn.php';
     
      
-        $sql = "SELECT * FROM MESSAGES";
-    
-        $QueryResult = mysqli_query($conn, $sql);       
-        $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-
-         while ($row = mysqli_fetch_assoc($QueryResult))
-            {
-               
-                $user_id = $row['user_id'];
-                $message_id = $row['message_id'];
-                $messages = "SELECT * FROM messages where user_id='$user_id';";
-                
-                $message = $row['message'];
-                $incident_id = $row['incident_id'];
-                
-                
-
-             
-            }
-
-if($messages == NULL) die('You have no messages');
 ?>
 
 <!DOCTYPE HTML>
@@ -54,22 +33,64 @@ if($messages == NULL) die('You have no messages');
                         <?= generateMenu() ?>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content" id="messages">
                     <div class="titleBox"><p>Messages</p></div>
                     <!-- Beautiful content here -->
-                    
-                    <?php
-                   
-                    foreach($messages as $messages)
-                    {
-                        echo "<p>$message</p>";
-                        echo "<p>$incident_id</p>";
-                        echo "<p>$user_id</p>";
-                        
-                    }
-                    ?>
 
-                    
+                    <div id="message-wrapper">
+                        <?php
+                        $sql = "SELECT 
+                                        incident.*,
+                                        messages.user_id,
+                                        client.name as client_name,
+                                        client.id as client_id,
+                                        operator.name as operator_name,
+                                        operator.id as operator_id,
+                                        sent_dateTime,
+                                        message    
+                                    FROM `messages` 
+                                    INNER JOIN incident ON messages.incident_id = incident.incident_id
+                                    INNER JOIN users as client ON incident.client_id = client.id
+                                    INNER JOIN users as operator ON incident.operator_id = operator.id
+                                    WHERE incident.status_id != '1' AND 
+                                      (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})";
+
+                        $query = mysqli_query($conn, $sql);
+
+                        $messagesPerIncident = [];
+                        while($row = mysqli_fetch_assoc($query)){
+                            if(!isset($messagesPerIncident[$row['incident_id']])){
+                                $messagesPerIncident[$row['incident_id']] = array();
+                            }
+                            $messagesPerIncident[$row['incident_id']][] = $row;
+                        }
+
+                        foreach($messagesPerIncident as $ticketID => $messages){ ?>
+
+                            <article>
+                                <h2>Ticket (<a href="viewTicket.php?ticket=<?= $ticketID ?>"><?= $ticketID ?></a>)</h2>
+
+                                <?php foreach($messages as $message){
+
+                                    $userType = $message['user_id'] == $_SESSION['id'] ? $_SESSION['userType'] : ($_SESSION['userType'] == "Client" ? "operator" : "client");
+                                    $userType = ($userType == "client") ? "client" : "operator";
+                                    $message[$userType . "_name"] = $message[$userType . "_name"] == $_SESSION['name'] ? "You" : $message[$userType . "_name"];
+                                    $extraClass = $message[$userType . "_name"] == "You" ? "isMe" : "";
+                                    ?>
+
+                                    <div class="message <?= $extraClass ?>">
+                                        <p class="name"><?= $message[$userType . "_name"] ?></p>
+                                        <p class="message-content"><?= $message['message'] ?></p>
+                                        <p class="timeSent"><?= $message['sent_dateTime'] ?></p>
+                                    </div>
+
+                                <?php }?>
+
+                            </article>
+
+
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
             <div class="footer">

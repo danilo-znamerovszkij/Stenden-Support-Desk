@@ -1,5 +1,9 @@
 <?php
-    require "php/requirements.php";
+    session_start();
+
+require "php/conn.php";
+require "php/permissions.php";
+require "php/functions.php";
 
     if (isset($_POST['submit'])&&isset($_POST['assign'])) { //updating the db
 
@@ -112,7 +116,7 @@
                                 <td><?= $row['start_date'] ?></td>
                                 <td><?= $row['category_name'] ?></td>
                                 <td><?= $row['status_name'] ?></td>
-                                <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
+                                <td><a href='ViewTicket.php?ticket=<?= $row['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25' height='25'></a></td>
                                 <td><form action="tickets.php" method="post">
                                     <input type="hidden" name="id" value="<?= $row['incident_id'] ?>">
 
@@ -137,7 +141,7 @@
                                       echo "<input style='margin-left:10px;' type='submit' value='Assign' name='submit'>";
 
                                     }else{//operator view
-                                      ?><input type="submit" value="Assign to me" name="submit">
+                                        ?> <input type="submit" value="Assign to me" name="submit">
                                       <!-- <input type="submit" value="Assign to me" name="submit"> -->
                                     <?php } ?>
 
@@ -183,17 +187,22 @@
                                         <td><a href='ViewTicket.php?ticket=<?= $row1['incident_id'] ?>'><img src='img/logo.png' alt='logo link' width='25px' height='25px'></a></td>
                                         <td> <?= $opName['name'] ?></td>
                                     </tr>
+                            
                                 <?php } ?>
                               <?php } ?>
+                            </table>
+        </div>
+            
 
-                          </div>
-                      </div>
-                      <div class="footer">
-                          <div class="terms">
-                              <p>Terms and conditions</p>
-                          </div>
-                          <div class="copyright"></div>
-                      </div>
-                  </div>
+                                    
+            </div>
+            <div class="footer">
+                <div class="terms">
+                    
+                    <p>Terms and conditions</p>
+                </div>
+                <div class="copyright"></div>
+            </div>
+        
               </body>
           </html>
