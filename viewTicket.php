@@ -48,7 +48,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                    <div class="titleDivider"></div>
+                    
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -83,7 +83,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
                                 <?php foreach(get_ticket_categories() as $category){
                                     $checked = $category['category_name'] == $ticket['category_name'] ? "selected": "";
                                     ?>
-                                    <option value="<?= $category['category_id'] ?>"<?= $checked ?>><?= $category['category_name'] ?></option>
+                                    <option value="<?= $category['category_id'] ?>"<?= $checked ?> > <?= $category['category_name'] ?></option>
                                 <?php } ?>
                             </select>
 

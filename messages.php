@@ -1,8 +1,7 @@
 <?php
     require "php/requirements.php";
     include 'php/conn.php';
-    
-     
+            
 ?>
 
 <!DOCTYPE HTML>
@@ -28,7 +27,7 @@
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                    <div class="titleDivider"></div>
+                   
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -36,7 +35,6 @@
                 <div class="content" id="messages">
                     <div class="titleBox"><p>Messages</p></div>
                     <!-- Beautiful content here -->
-
                     <div id="message-wrapper">
                         <?php
                         $sql = "SELECT 
@@ -53,7 +51,8 @@
                                     INNER JOIN users as client ON incident.client_id = client.id
                                     INNER JOIN users as operator ON incident.operator_id = operator.id
                                     WHERE incident.status_id != '1' AND 
-                                      (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})";
+                                      (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})  
+                                    ORDER BY sent_dateTime";
 
                         $query = mysqli_query($conn, $sql);
 
