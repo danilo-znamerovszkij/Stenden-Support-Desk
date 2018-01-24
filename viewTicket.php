@@ -48,7 +48,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                    <div class="titleDivider"></div>
+                    
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>

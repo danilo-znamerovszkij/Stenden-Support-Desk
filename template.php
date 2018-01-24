@@ -37,7 +37,7 @@
             </div>
             <div class="footer">
                 <div class="terms">
-                     <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
+                    <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>
