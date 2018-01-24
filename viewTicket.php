@@ -118,7 +118,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
             </div>
             <div class="footer">
                 <div class="terms">
-                    <p>Terms and conditions</p>
+                     <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>

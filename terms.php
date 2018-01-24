@@ -78,9 +78,7 @@
                      </div>
             </div>
             <div class="footer">
-                <div class="terms">
-                    <p>Terms and conditions</p>
-                </div>
+                
                 <div class="copyright"></div>
             </div>
         </div>
