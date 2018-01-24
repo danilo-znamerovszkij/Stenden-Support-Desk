@@ -1,8 +1,7 @@
 <?php
     require "php/requirements.php";
     include 'php/conn.php';
-    
-     
+            
 ?>
 
 <!DOCTYPE HTML>
@@ -36,7 +35,6 @@
                 <div class="content" id="messages">
                     <div class="titleBox"><p>Messages</p></div>
                     <!-- Beautiful content here -->
-
                     <div id="message-wrapper">
                         <?php
                         $sql = "SELECT 

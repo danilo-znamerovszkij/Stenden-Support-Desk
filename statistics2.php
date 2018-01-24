@@ -73,8 +73,8 @@ foreach ($QueryResult as $row) {
                 </div>
                 <div class="content" style="background-color:#282828;">
                     <div class="titleBox"><p style="margin: -10px 0px 10px 0px">Statistics</p>
-                        <div class="tabOpen" style="float: right;"><p>Visualized Statistics</p></div>
-                        <div class="tab"><p><a href="statistics.php" class="linkS">Numerical Statistics</a></p></div></div>
+                        <div class="tabOpen" style="float: right;"><p>Overall Statistics</p></div>
+                        <div class="tab"><p><a href="statistics.php" class="linkS">Detailed Statistics</a></p></div></div>
                     <!-- Beautiful content here -->
                     <div id="chartdiv1" style="width: 600px; height: 400px;"></div>
                 </div>

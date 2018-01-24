@@ -17,7 +17,7 @@ $permissionTable = [
     ],
     "no license" => [
         "view" => ['faq.php', 'terms.php'],
-        "edit" => [],
+        "edit" => ['viewTicket.php'],
         "delete" => []
     ],
     "operator" => [

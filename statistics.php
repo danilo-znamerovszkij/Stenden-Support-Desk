@@ -33,7 +33,7 @@
                 <div class="content">
                     <div class="titleBox"><p style="margin: -10px 0px 10px 0px">Statistics</p>
 					<div class="tab"><p><a href="statistics2.php" class="linkS">Visualized Statistics</a></div>
-					<div class="tabOpen"><p>Numerical Statistics</p></div></div>
+                   <div class="tabOpen"><p>Numerical Statistics</p></div></div>
                     <!-- Beautiful content here -->
                     <?php
                     $sql= "select * from category" ;
