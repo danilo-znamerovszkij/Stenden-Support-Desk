@@ -22,7 +22,7 @@
 
 $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
-if($ticket == NULL) die('There is no ticket associated with the given ID.');
+//if($ticket == NULL) die('There is no ticket associated with the given ID.');
 
 ?>
 <!DOCTYPE HTML>
@@ -132,8 +132,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
      if(is_employee()==TRUE){  
    
                             if (isset($_POST['submit'])) {
-                                header ("Location: MyTickets.php");
-                                exit;
+               
                                 //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
 
                                 $problem = $_POST['solution'];
