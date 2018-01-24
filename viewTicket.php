@@ -56,7 +56,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
                 <div class="content viewTicket">
                     <div class="titleBox"><p>Viewing Ticket with ID: <?= $ticket['incident_id'] ?></p></div>
 
-                    <form action="viewTicket.php" method="POST">
+                    <form action="viewTicket.php?ticket=<?=$_GET['ticket']?>" method="POST">
                         <input type="hidden" name="id" value="<?= $ticket['incident_id'] ?>">
 
                         <p>Start date</p>
@@ -92,7 +92,9 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
 
                             <p>Solution</p>
                             <textarea name="solution"><?= $ticket['solution'] ?></textarea>
-
+                            <input type="submit"  name="submit" value ='submit'>
+                            
+                        
                         <?php } else { ?>
 
                             <p>Employee name</p>
@@ -111,6 +113,7 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
 
                             <p>Solution</p>
                             <p class="isValue"><?= $ticket['solution'] ?></p>
+                            <input type="submit"  name="submit" value ='submit'>
                         <?php } ?>
                     </form>
 
@@ -125,3 +128,29 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
         </div>
     </body>
 </html>
+<?php
+     if(is_employee()==TRUE){  
+   
+                            if (isset($_POST['submit'])) {
+                                header ("Location: MyTickets.php");
+                                exit;
+                                //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
+
+                                $problem = $_POST['solution'];
+                                $description = $_POST['category_id'];
+                                $status = $_POST['status_id'];
+                        /*PREPARED STATEMENTS FOR ADDING TICKETS*/
+                                $sql = "UPDATE incident set solution = ?, status_id = ?, category_id = ?";
+//                                $sql = "INSERT INTO incident(status_id, solution, description) VALUES (?, ?, ?) WHERE incident_id = '{$ticket['incident_id']}';";
+                                $stmt = mysqli_stmt_init($conn);
+                                mysqli_stmt_prepare($stmt, $sql);
+                                mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_close($stmt);
+                                
+                            } else {
+                                echo "You have to complete both the type of problem and the description!";
+                                }
+     }
+                        
+                        ?>
