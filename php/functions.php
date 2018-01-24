@@ -88,3 +88,7 @@ function redirect($url){
     header("Location: $url");
     exit;
 }
+
+function escape($row) {
+    return htmlspecialchars($row, ENT_QUOTES, 'UTF-8');
+}
