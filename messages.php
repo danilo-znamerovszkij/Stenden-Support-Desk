@@ -51,7 +51,8 @@
                                     INNER JOIN users as client ON incident.client_id = client.id
                                     INNER JOIN users as operator ON incident.operator_id = operator.id
                                     WHERE incident.status_id != '1' AND 
-                                      (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})";
+                                      (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})  
+                                    ORDER BY sent_dateTime";
 
                         $query = mysqli_query($conn, $sql);
 
