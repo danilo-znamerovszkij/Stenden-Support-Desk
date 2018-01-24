@@ -11,6 +11,7 @@
                 INNER JOIN status ON incident.status_id = status.status_id
                 WHERE incident.incident_id = '{$_GET['ticket']}'
                 ORDER BY incident_id DESC";
+                $sqlNAME="SELECT client_id from incident WHERE incident_id = '{$_GET['ticket']}'";
     } else {
         $sql = "SELECT * FROM incident
                 INNER JOIN users ON incident.operator_id = users.id
@@ -18,11 +19,55 @@
                 INNER JOIN status ON incident.status_id = status.status_id
                 WHERE incident.incident_id = '{$_GET['ticket']}'
                 ORDER BY incident_id DESC";
+                $sqlNAME="SELECT operator_id from incident WHERE incident_id = '{$_GET['ticket']}'";
     }
 
 $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
 if($ticket == NULL) die('There is no ticket associated with the given ID.');
+     if(is_employee()==TRUE){  
+   
+                            if (isset($_POST['submit'])) {
+                                echo'<meta http-equiv="refresh"content="0";url="http://localhost/PhpProject3/Stenden-Support-Desk/MyTickets.php">';
+                                
+                                //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
+
+                                $problem = $_POST['solution'];
+                                $description = $_POST['category_id'];
+                                $status = $_POST['status_id'];
+                        /*PREPARED STATEMENTS FOR ADDING TICKETS*/
+                                $sql = "UPDATE incident set solution = ?, status_id = ?, category_id = ? where incident_id = '{$_GET['ticket']}'";
+//                                $sql = "INSERT INTO incident(status_id, solution, description) VALUES (?, ?, ?) WHERE incident_id = '{$ticket['incident_id']}';";
+                                $stmt = mysqli_stmt_init($conn);
+                                mysqli_stmt_prepare($stmt, $sql);
+                                mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_close($stmt);
+                                
+                            } 
+     }else{
+         if (isset($_POST['submit'])) {
+                                echo'<meta http-equiv="refresh"content="0";url="http://localhost/PhpProject3/Stenden-Support-Desk/MyTickets.php">';
+                                
+                                //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
+
+                                $problem = $_POST['description'];
+                                $description = $_POST['category_id'];
+                                $status = $_POST['status_id'];
+                        /*PREPARED STATEMENTS FOR ADDING TICKETS*/
+                                $sql = "UPDATE incident set solution = ?, status_id = ?, category_id = ? where incident_id = '{$_GET['ticket']}'";
+//                                $sql = "INSERT INTO incident(status_id, solution, description) VALUES (?, ?, ?) WHERE incident_id = '{$ticket['incident_id']}';";
+                                $stmt = mysqli_stmt_init($conn);
+                                mysqli_stmt_prepare($stmt, $sql);
+                                mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_close($stmt);
+         
+         
+         
+     }
+     }
+                        
 
 ?>
 <!DOCTYPE HTML>
@@ -128,29 +173,3 @@ if($ticket == NULL) die('There is no ticket associated with the given ID.');
         </div>
     </body>
 </html>
-<?php
-     if(is_employee()==TRUE){  
-   
-                            if (isset($_POST['submit'])) {
-                                header ("Location: MyTickets.php");
-                                exit;
-                                //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
-
-                                $problem = $_POST['solution'];
-                                $description = $_POST['category_id'];
-                                $status = $_POST['status_id'];
-                        /*PREPARED STATEMENTS FOR ADDING TICKETS*/
-                                $sql = "UPDATE incident set solution = ?, status_id = ?, category_id = ?";
-//                                $sql = "INSERT INTO incident(status_id, solution, description) VALUES (?, ?, ?) WHERE incident_id = '{$ticket['incident_id']}';";
-                                $stmt = mysqli_stmt_init($conn);
-                                mysqli_stmt_prepare($stmt, $sql);
-                                mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
-                                mysqli_stmt_execute($stmt);
-                                mysqli_stmt_close($stmt);
-                                
-                            } else {
-                                echo "You have to complete both the type of problem and the description!";
-                                }
-     }
-                        
-                        ?>
