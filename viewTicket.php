@@ -152,7 +152,7 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
                             <p>Solution</p>
                             <textarea name="solution"><?= $ticket['solution'] ?></textarea>
-                            <input type="submit"  name="submit" value ='submit'>
+                            <input type="submit"  name="submit" value ='submit solution'>
                             
                         
                         <?php } else { ?>
@@ -175,11 +175,11 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
                             <p>Solution</p>
                             <p class="isValue"><?= $ticket['solution'] ?></p>
-                            <input type="submit"  name="submit" value ='submit'>
+                            <input type="submit"  name="submit" value ='submit solution'>
                             
                             <form action="viewTicket.php?ticket=<?=$_GET['ticket']?>" method="POST">
                                 <textarea name="message"></textarea>
-                                <input type="submit"  name="messageSubmit" value ='submit'>
+                                <input type="submit"  name="messageSubmit" value ='submit message'>
                             </form>
                         <?php } ?>
                     </form>
