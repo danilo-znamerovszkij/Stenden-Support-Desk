@@ -174,18 +174,22 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
                           </div>
 
+                          <div>
                             <p><b>Description</b></p>
                             <!-- Can the user change this after he/she has submitted a ticket? -->
                             <textarea class="viewTicketText" name="description"><?= $ticket['description'] ?></textarea>
 
                             <p><b>Solution</b></p>
                             <p class="isValue"><?= $ticket['solution'] ?></p>
-                            <input type="submit"  name="submit" value ='submit solution'>
 
                             <form action="viewTicket.php?ticket=<?=$_GET['ticket']?>" method="POST">
-                                <textarea name="message"></textarea>
+                                <textarea class="viewTicketText" name="message"></textarea>
+                                <input style="float:right;" type="submit"  name="submit" value ='submit solution'>
+
                                 <input type="submit"  name="messageSubmit" value ='submit message'>
                             </form>
+                          </div>
+
                         <?php } ?>
                     </form>
 

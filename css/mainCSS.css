@@ -291,14 +291,14 @@ input:focus {
 	width: 50%;
 	float: left;
 	height: auto;
-	background-color: grey;
+	/* background-color: grey; */
 }
 
 .viewTicketEmployee{
 	width: 50%;
 	float: left;
 	height: auto;
-	background-color: lightgrey;
+	/* background-color: lightgrey; */
 }
 
 .viewTicketText{
