@@ -23,11 +23,11 @@
 $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
 //if($ticket == NULL) die('There is no ticket associated with the given ID.');
-     if(is_employee()==TRUE){  
-   
+     if(is_employee()==TRUE){
+
                             if (isset($_POST['submit'])) {
                                 echo'<meta http-equiv="refresh"content="0";url="http://localhost/PhpProject3/Stenden-Support-Desk/MyTickets.php">';
-                                
+
                                 //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
 
                                 $problem = $_POST['solution'];
@@ -41,12 +41,12 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                                 mysqli_stmt_bind_param($stmt, "sss", $problem, $status, $description);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_close($stmt);
-                                
-                            } 
+
+                            }
      }else{
          if (isset($_POST['submit'])) {
                                 echo'<meta http-equiv="refresh"content="0";url="http://localhost/PhpProject3/Stenden-Support-Desk/MyTickets.php">';
-                                
+
                                 //if ((isset($_POST['solution'])) && (!empty($_POST['category_id']))) {
 
                                 $problem = $_POST['description'];
@@ -58,18 +58,18 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                                 mysqli_stmt_bind_param($stmt, "s", $problem);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_close($stmt);
-         
-         
-         
+
+
+
      }
      }
-                        
+
 
      if(isset($_POST['message']))
      {
-         
+
          $message = $_POST['message'];
-                        
+
                         $incident_id = $_GET['ticket'];
                         $user_id = $_SESSION['id'];
                         /*PREPARED STATEMENTS FOR ADDING TICKETS*/
@@ -80,9 +80,9 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                                 mysqli_stmt_bind_param($stmt, "sii", $message, $incident_id, $user_id);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_close($stmt);
-         
+
      }
-     
+
 ?>
 
 <!DOCTYPE HTML>
@@ -108,7 +108,7 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                    
+
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -119,11 +119,14 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                     <form action="viewTicket.php?ticket=<?=$_GET['ticket']?>" method="POST">
                         <input type="hidden" name="id" value="<?= $ticket['incident_id'] ?>">
 
-                        <p>Start date</p>
-                        <p class="isValue"><?= $ticket['start_date'] ?></p>
 
-                        <p>End date</p>
-                        <p class="isValue"><?= $ticket['end_date'] != NULL ? $ticket['end_date'] : "N/A" ?></p>
+                        <div class="viewTicketData">
+                          <p><b>Start date: </b><?= $ticket['start_date'] ?></p>
+                          <p><b>End date: </b><?= $ticket['end_date'] != NULL ? $ticket['end_date'] : "N/A" ?></p>
+                          <p><b>Status: </b><?= $ticket['status_name'] ?></p>
+                          <p><b>Category: </b><?= $ticket['category_name'] ?></p>
+                        </div>
+
 
                         <?php if(is_employee()){ ?>
                             <p>Client name</p>
@@ -153,30 +156,32 @@ $ticket = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                             <p>Solution</p>
                             <textarea name="solution"><?= $ticket['solution'] ?></textarea>
                             <input type="submit"  name="submit" value ='submit solution'>
-                            
-                        
-                        <?php } else { ?>
-                            <?php if($ticket['operator_id']!=NULL){ ?>
-<p class="isValue"><img src="PICTURES\<?= $ticket['operator_id']; ?>.jpg" alt="operator's photo" width='150' height='200'/></p>
-                            <?php } ?>
-                            <p>Employee name</p>
-                            <p class="isValue"><?= $ticket['name'] ?></p>
 
-                            <p>Status</p>
-                            <p class="isValue"><?= $ticket['status_name'] ?></p>
 
-                            <!-- Does the customer need to see this? -->
-                            <p>Category</p>
-                            <p class="isValue"><?= $ticket['category_name'] ?></p>
+                        <?php } else { ?> <!-- If not an employee -->
 
-                            <p>Description</p>
+                          <div class="viewTicketEmployee">
+
+                            <div style="float:right;">
+
+                              <?php if($ticket['operator_id']!=NULL){ ?>
+                                <p><img src="PICTURES\<?= $ticket['operator_id']; ?>.jpg" alt="operator's photo" width='150' height='200'/></p>
+                              <?php } ?>
+                              <p><b>Employee name: </b></p>
+                              <p><?= $ticket['name'] ?></p>
+
+                            </div>
+
+                          </div>
+
+                            <p><b>Description</b></p>
                             <!-- Can the user change this after he/she has submitted a ticket? -->
-                            <textarea name="description"><?= $ticket['description'] ?></textarea>
+                            <textarea class="viewTicketText" name="description"><?= $ticket['description'] ?></textarea>
 
-                            <p>Solution</p>
+                            <p><b>Solution</b></p>
                             <p class="isValue"><?= $ticket['solution'] ?></p>
                             <input type="submit"  name="submit" value ='submit solution'>
-                            
+
                             <form action="viewTicket.php?ticket=<?=$_GET['ticket']?>" method="POST">
                                 <textarea name="message"></textarea>
                                 <input type="submit"  name="messageSubmit" value ='submit message'>

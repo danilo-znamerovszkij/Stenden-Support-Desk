@@ -287,6 +287,25 @@ input:focus {
 
 /* END OF VIEW TICKETS PAGE */
 
+.viewTicketData{
+	width: 50%;
+	float: left;
+	height: auto;
+	background-color: grey;
+}
+
+.viewTicketEmployee{
+	width: 50%;
+	float: left;
+	height: auto;
+	background-color: lightgrey;
+}
+
+.viewTicketText{
+	width: 95%;
+	height: 100px;
+}
+
 #message-wrapper {
     width: 600px;
     padding: 20px;
