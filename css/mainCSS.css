@@ -360,3 +360,8 @@ input:focus {
     font-size:13pt;
     margin: 15px 0 15px 30px;
 }
+
+.hover:hover{
+	background-color: #80a3c8;
+	cursor: pointer;
+}

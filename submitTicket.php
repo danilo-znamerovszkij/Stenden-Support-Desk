@@ -39,14 +39,14 @@ $errorFlag = "";
                     mysqli_stmt_close($stmt);
 
                     $errorFlag = "You successfully added a ticket";
-                   
+
                 } else {
                     $errorFlag = "Please fill in all the required fields";
-                   
+
                 }
 
             }
-            
+
             ?>
     <div id="content-wrapper">
         <div id="sidebar">
@@ -54,7 +54,7 @@ $errorFlag = "";
                 <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                 <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
             </div>
-           
+
             <div class="navWrapper">
                 <?= generateMenu() ?>
             </div>
@@ -62,7 +62,7 @@ $errorFlag = "";
 
         <div class="content">
             <div class="titleBox"><p>Submit Ticket</p></div>
-           
+
             <div class="content1">
                 <div id="softwareName">Software Name</div>
                 <div class="line1"></div>
@@ -86,7 +86,7 @@ $errorFlag = "";
                             </select>
                         </div>
                     </div>
-                    <input type="submit" id="submit" name="submit">
+                    <input class="hover" type="submit" id="submit" name="submit" value="Submit Ticket">
             </div>
 
 
@@ -95,15 +95,16 @@ $errorFlag = "";
                     <div class="line3"></div>
                     <div class="textWrap">
                         <textarea name="description"></textarea>
-                         <p><?= $errorFlag; ?></p>
+                        <div style="float:left; margin-left:90px;"><p><?= $errorFlag; ?></p></div>
                     </div>
-                    
-                   
+
+
+
                 </div>
             </div>
 
-           
-          
+
+
             </form>
         </div>
 

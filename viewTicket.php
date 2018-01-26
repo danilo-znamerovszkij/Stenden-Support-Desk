@@ -154,16 +154,16 @@ if (isset($_POST['message']))
                                     <option value="<?= $category['category_id'] ?>"<?= $checked ?> > <?= $category['category_name'] ?></option>
                      <?php } ?>
                             </select>
-                            
+
                             <p>Description</p>
                             <p class="isValue"><?= $ticket['description'] ?></p>
-                            
+
                             <p >Solution</p>
-                            <textarea name="solution"><?= $ticket['solution'] ?></textarea>
+                            <textarea class="viewTicketText" name="solution"><?= $ticket['solution'] ?></textarea>
                             <p class="client_view2">
                             <input type="submit"  name="submit" value ='Submit solution'>
                             </p>
-                            
+
                      <?php if ($ticket['solution'])
                             { ?>
                             <div class="client_view">
