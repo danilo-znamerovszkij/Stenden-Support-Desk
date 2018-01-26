@@ -10,8 +10,8 @@
                     WHERE operator_id = '{$_SESSION['id']}'
                     ORDER BY incident.status_id, start_date DESC";
     } else {
-        $sql = "SELECT * FROM incident
-                    INNER JOIN users ON incident.operator_id = users.id
+        $sql = "SELECT *, IFNULL(incident.operator_id, '0') FROM incident
+                    LEFT OUTER JOIN users ON incident.operator_id = users.id
                     INNER JOIN category ON incident.category_id = category.category_id
                     INNER JOIN status ON incident.status_id = status.status_id
                     WHERE client_id = '{$_SESSION['id']}'
@@ -73,7 +73,14 @@
                             <?php while ($row = mysqli_fetch_assoc($qry)){ ?>
                                 <tr>
                                     <td><?= escape($row['incident_id']) ?></td>
-                                    <td><?= escape($row['name']) ?></td>
+                                    <td><?php
+                                    if(escape($row['name'])){
+                                        echo escape($row['name']);
+                                    }
+                                    else{
+                                        echo "Not assigned yet";
+                                    }
+                                        ?></td>
                                     <td><?= escape($row['start_date']) ?></td>
                                     <td><?= escape($row['category_name']) ?></td>
                                     <td><?= escape($row['status_name']) ?></td>
