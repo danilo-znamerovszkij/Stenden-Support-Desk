@@ -30,7 +30,7 @@
                         <?= generateMenu() ?>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content" id="terms">
                     <div class="titleBox"><p>Terms and conditions</p></div>
                     <!-- Beautiful content here -->
                     <h1>Privacy statement</h1>
@@ -42,6 +42,7 @@
                         <li>We take appropriate security measures to protect your personal data, and we demand the same from any third parties that process personal data on our behalf;</li>
                         <li>We respect your right to inspect and correct your personal data and have it deleted if required.</li>
                     </ul>
+                    
                     This Privacy Statement explains for what purposes we use your personal data and whom you can contact with any questions you may have. We therefore recommend that you carefully review this Privacy Statement.
                     We regularly update this Privacy Statement, which means it is subject to change. The Privacy Statement was most recently updated on 19th  October 2017.
                     <h2>What types of personal data do we process?</h2>
@@ -73,8 +74,8 @@
                     If you would like to block not only Facebook adverts by Vinlerd  but also content by third parties, you can get more information about how to block third-party advertising.
                     Please note: If you have used one of the options above to block targeted Facebook advertising, you may still see Vinlerd advertising on Facebook. This is the case, for example, if Facebook links your profile to a general advertising campaign launched by Vinlerd. Unfortunately, this is a process over which we have no control.
                     <h2>Security</h2>
-                    Vinlerd  is committed to protecting your data and has taken appropriate measures to prevent misuse, loss, unauthorised access, unwanted disclosure and unauthorised modification.
-
+                    Stenden Support Desk is committed to protecting your data and has taken appropriate measures to prevent misuse, loss, unauthorised access, unwanted disclosure and unauthorised modification.
+                
                      </div>
             </div>
             <div class="footer">

@@ -1,7 +1,6 @@
 <?php
-    require "php/requirements.php";
-    include 'php/conn.php';
-            
+require "php/requirements.php";
+include 'php/conn.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -27,7 +26,7 @@
                         <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                         <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
                     </div>
-                   
+
                     <div class="navWrapper">
                         <?= generateMenu() ?>
                     </div>
@@ -52,27 +51,36 @@
                                     INNER JOIN users as operator ON incident.operator_id = operator.id
                                     WHERE incident.status_id != '1' AND 
                                       (incident.client_id = {$_SESSION['id']} OR incident.operator_id = {$_SESSION['id']})  
-                                    ORDER BY sent_dateTime";
+                                    ORDER BY sent_dateTime DESC";
 
                         $query = mysqli_query($conn, $sql);
-
                         $messagesPerIncident = [];
-                        while($row = mysqli_fetch_assoc($query)){
-                            if(!isset($messagesPerIncident[$row['incident_id']])){
+                        while ($row = mysqli_fetch_assoc($query))
+                        {
+                            if (!isset($messagesPerIncident[$row['incident_id']]))
+                            {
                                 $messagesPerIncident[$row['incident_id']] = array();
                             }
                             $messagesPerIncident[$row['incident_id']][] = $row;
                         }
 
-                        foreach($messagesPerIncident as $ticketID => $messages){ ?>
+                        foreach ($messagesPerIncident as $ticketID => $messages)
+                        {
+                            echo $ticketID['$message'];
+                            ?>
 
                             <article>
                                 <h2>Ticket (<a href="viewTicket.php?ticket=<?= $ticketID ?>"><?= $ticketID ?></a>)</h2>
 
-                                <?php foreach($messages as $message){
-
-                                    $userType = $message['user_id'] == $_SESSION['id'] ? $_SESSION['userType'] : ($_SESSION['userType'] == "Client" ? "operator" : "client");
-                                    $userType = ($userType == "client") ? "client" : "operator";
+                                <?php
+                                
+                                foreach ($messages as $message)
+                                {
+                                    
+                                    $userType = $message['user_id'] == $_SESSION['id'] ? $_SESSION['userType'] : (strtolower($_SESSION['userType']) == "client" ? "operator" : "client");
+                                    
+                                    $userType = (strtolower($userType) == "client") ? "client" : "operator";
+                                   
                                     $message[$userType . "_name"] = $message[$userType . "_name"] == $_SESSION['name'] ? "You" : $message[$userType . "_name"];
                                     $extraClass = $message[$userType . "_name"] == "You" ? "isMe" : "";
                                     ?>
@@ -83,18 +91,21 @@
                                         <p class="timeSent"><?= $message['sent_dateTime'] ?></p>
                                     </div>
 
-                                <?php }?>
+                            <?php }
+                            ?>
 
                             </article>
 
+<?php
+}
 
-                        <?php } ?>
+?>
                     </div>
                 </div>
             </div>
             <div class="footer">
                 <div class="terms">
-                    <p>Terms and conditions</p>
+                     <a href="terms.php" class="linkS"><p>Terms and conditions</p></a>
                 </div>
                 <div class="copyright"></div>
             </div>

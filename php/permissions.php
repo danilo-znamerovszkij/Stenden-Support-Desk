@@ -1,7 +1,5 @@
 <?php
 
-// Howdy!
-
 // This is my idea of a simple and easy to use permission system
 // Basically, it uses a lookup 'table', to determine if a user can do a certain action on a resource (page)
 // With action I mean something like 'view' and with a resource I mean a page like 'tickets.php'.
@@ -12,13 +10,14 @@
 $permissionTable = [
     "client" => [
         "view" => ['faq.php', 'submitTicket.php', 'MyTickets.php', 'messages.php', 'terms.php'],
-        "edit" => ['viewTicket.php'],
-        "delete" => []
+        "edit" => ['viewTicket.php']
     ],
     "no license" => [
         "view" => ['faq.php', 'terms.php'],
-        "edit" => [],
-        "delete" => []
+        "edit" => []
+    ],
+     "security operator" => [
+        "view" => ['tickets.php','statistics.php', 'statistics2.php', 'terms.php']
     ],
     "operator" => [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php','terms.php'],
@@ -28,7 +27,6 @@ $permissionTable = [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php', 'statistics2.php','terms.php'],
         "edit" => ['viewTicket.php'],
     ]
-    // ... and much more of those beautiful account types
 ];
 
 // So now that we have the lookup table in place,

@@ -128,7 +128,7 @@ input:focus {
 .wrapper #content-wrapper #sidebar .userDetails .clientName p{
     color:white;
     text-align: center;
-    font-size:14pt;
+    font-size:12pt;
 }
 .wrapper #content-wrapper #sidebar .userDetails .clientType p {
     color:white;
@@ -321,6 +321,7 @@ input:focus {
     background: #80A3C8;
     color: white;
     position: relative;
+    z-index:-1;
 }
 #messages article .message.isMe {
     background: #01448B
@@ -338,4 +339,24 @@ input:focus {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+#terms p{
+    margin-left:25px;
+}
+#terms h1, h2{
+    margin-left:20px;
+}
+#terms ul,li{
+    margin-left:30px;
+    list-style:none;
+}
+.client_view input[type='submit']{
+    padding:5px;
+    font-size:13pt;
+    margin: 50px 0 50px 45%;
+}
+.client_view2 input[type='submit'] {
+    padding:5px;
+    font-size:13pt;
+    margin: 15px 0 15px 30px;
 }
