@@ -17,7 +17,9 @@ $permissionTable = [
         "edit" => []
     ],
      "security operator" => [
+
         "view" => ['tickets.php','statistics.php', 'statistics2.php', 'terms.php', 'signup.php']
+
     ],
     "operator" => [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php','terms.php'],
