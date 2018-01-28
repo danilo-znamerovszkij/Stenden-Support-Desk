@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 <?php
 
 require "php/requirements.php";
 include 'php/conn.php';
 $errorFlag = "";
 
+=======
+<?php session_start();
+if (isset($_SESSION['u_username'])) {
+}else {
+  echo "You are not logged in.";
+  die;
+}
+
+if ($_SESSION['u_license'] == 0) {
+  header('Location: faq.php');
+}
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
 ?>
 
 <!DOCTYPE HTML>
@@ -51,13 +64,24 @@ $errorFlag = "";
     <div id="content-wrapper">
         <div id="sidebar">
             <div class="userDetails">
+<<<<<<< HEAD
                 <div class="clientName"><p><?php echo $_SESSION['name']; ?></p></div>
                 <div class="clientType"><p><?php echo $_SESSION['userType']; ?></p></div>
+=======
+
+                <div class="clientName">
+                    <p><?php echo $_SESSION['u_name']; ?></p>
+                </div>
+                <div class="clientType">
+                    <p><?php echo "ID " . $_SESSION['u_id']; ?></p>
+                </div>
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
             </div>
 
             <div class="navWrapper">
                 <?= generateMenu() ?>
             </div>
+<<<<<<< HEAD
         </div>
 
         <div class="content">
@@ -97,6 +121,78 @@ $errorFlag = "";
                         <textarea name="description"></textarea>
                         <div style="float:left; margin-left:90px;"><p><?= $errorFlag; ?></p></div>
                     </div>
+=======
+
+            <div class="titleDivider">
+
+            </div>
+            <div class="content">
+                <div class="content1">
+                    <div id="softwareName">Software Name
+                        <div class="line1"></div>
+                         <div class="mainselection">
+                            <select name="software" id="input7">
+                                <option>Financial software</option>
+    <!--                            <option value="Alabama">Alabama</option>
+
+                                <option value="Wisconsin">Wisconsin</option>
+                                <option value="Wyoming">Wyoming</option>    -->                          
+                            </select>
+                            </div> 
+                    </div>
+                    <div id="problemType"> Problem Type
+                        <div class="line2"></div>
+                            <div class="mainselection">
+                                <select name="problem" id="input7">
+                                    <option>Choose the type</option>
+                                    <option value="Alabama">Crash</option>
+
+                                    <option value="Wisconsin">Crash</option>
+                                    <option value="Wyoming">Crash</option>                              
+                                </select>
+                            </div> 
+                           
+                    </div>
+                    <input type="submit" id="submit">
+                </div>
+                
+                
+                <div class="content2">
+                    <div id="pbd">Problem Description
+                        <div class="line3"></div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="navWrapper">
+
+              <a href="faq.php">
+                <div id="navItem">
+                    <p>F.A.Q.</p>
+                </div>
+              </a>
+
+              <a href="myTickets.php">
+                <div id="navItem">
+                    <p>My Tickets</p>
+                </div>
+              </a>
+
+              <a href="messages.php">
+                <div id="navItem">
+                    <p>Messages</p>
+                </div>
+              </a>
+
+              <a href="logout.php">
+                <div id="navItem">
+                    <p>Log Out</p>
+                </div>
+              </a>
+
+            </div>
+            <div class="footer">
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
 
 
 
@@ -104,6 +200,11 @@ $errorFlag = "";
             </div>
 
 
+<<<<<<< HEAD
+=======
+
+                <div class="copyright">
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
 
             </form>
         </div>

@@ -1,14 +1,21 @@
 <?php
-    session_start();
+session_start();
+	  //please use $result to display error messages, the html part is adapted to print out errors (currently lines 35-46 have to code on them)
+?>
 
-    require "php/conn.php";
-    require "php/functions.php";
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stenden eHelp Login</title>
+		<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
+		<link rel="stylesheet" type="text/css" href="css/loginCSS.css">
+	</head>
 
-    if(isset($_POST['submit'])){
+	<body>
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+	<div id="inputs_login">
 
+<<<<<<< HEAD
         $sql = "SELECT id, name, username, position_Role, password  FROM users
                 INNER JOIN position ON users.position_id = position.position_id
                 WHERE username = '$username' ";
@@ -40,10 +47,36 @@
             // Nope, there is no users. Let's inform them.
             $error = "Username or login is not correct.";
         }
+=======
+		<div class="logo">
+			<img src="img/login.jpg" alt="Stenden eHelp Logo">
+		</div>
+		<div class="fields">
+			<form action="LoginProceduresF.php" method="post" name="login">
+					<p><div class="fieldsText">Username </div><input class="fieldsInput" style="width: 100%;" type="text" name="username"></p>
+					<p><div class="fieldsText">Password </div><input class="fieldsInput" style="width: 100%;" type="Password" name="password"></p>
+					<p><input class="fieldsText button" style=" margin-top: 10px; float: left; margin-left:35%;" type="submit" name="submit" value="Login"></p>
+			</form>
 
-    }
-?>
+		</div>
 
+		<?php
+		if (isset($_POST['submit'])){
+
+			echo "
+			<div class='response'>
+                                
+				<p style='margin-left: 10px'>".$_SESSION['loginError']." </p>
+
+
+			</div>";
+		}
+		?>
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
+
+	</div>
+
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,5 +104,7 @@
                 </div>
             <?php } ?>
         </div>
+=======
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
 	</body>
 </html>

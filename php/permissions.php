@@ -9,6 +9,7 @@
 
 $permissionTable = [
     "client" => [
+<<<<<<< HEAD
         "view" => ['faq.php', 'submitTicket.php', 'MyTickets.php', 'messages.php', 'terms.php'],
         "edit" => ['viewTicket.php']
     ],
@@ -28,11 +29,25 @@ $permissionTable = [
     "team leader" => [
         "view" => ['tickets.php', 'MyTickets.php', 'messages.php', 'statistics.php', 'statistics2.php','terms.php'],
         "edit" => ['viewTicket.php'],
+=======
+        "view" => ['index.php', 'dashboard.php', 'my_tickets.php', 'faq.php', 'my_account.php'],
+        "edit" => ['my_tickets.php', 'my_account.php'],
+        "delete" => ['my_tickets.php']
+    ],
+    "employee" => [
+        "view" => ['index.php', 'dashboard.php', 'my_tickets.php', 'open_tickets.php', 'my_account.php'],
+        "edit" => ['my_tickets.php', 'my_account.php'],
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
     ]
 ];
 
 // So now that we have the lookup table in place,
 // Let's make a function that checks whether a user can do an action on a resource (page)
+
+// But before we can create this function, we have a dependency.
+// Because to find the permissions associated with the user, we need the 'permission level' of the user account.
+// For now I went with a hardcoded "employee", but obviously this needs to chance.
+$_SESSION['permissionLevel'] = "employee";
 
 // So now that we have all the required variables, we can create the function.
 // The function takes two parameters:
@@ -42,7 +57,7 @@ function user_can($action, $resource){
     global $permissionTable;
 
     // First, we need the permissions associated with the user
-    $permissions = $permissionTable[strtolower($_SESSION['userType'])];
+    $permissions = $permissionTable[$_SESSION['permissionLevel']];
 
     // Now, Let's check if the user is to do the action on the resource.
 
@@ -59,4 +74,24 @@ function user_can($action, $resource){
         // Ah shucks! Nice try tho.
         return false;
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+
+//// Let's show some examples...
+//user_can('view', 'index.php'); // True
+//user_can('delete', 'a no go'); // False. Damn
+//
+//// Some even more concrete examples...
+//if(user_can('view', 'dashboard.php')){
+//    echo 'Welcome to the dashboard.';
+//} else {
+//    echo 'You are not allowed here. Get out!';
+//}
+//
+//// Or even better:
+//// (At the top of every page)
+//if(!user_can('view', basename(__FILE__))) die('You are not supposed to see this page! Sorry!');
+>>>>>>> parent of 13fac04... “There are all kinds of courage,” said Dumbledore, smiling. “It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”  –The Philosopher’s Stone
